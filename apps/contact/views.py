@@ -6,11 +6,7 @@ import html
 from apps.contact.models import contact, ContactMessage
 
 def contact_view(request):
-    setting = contact.objects.last()
-    context = {
-        'setting': setting
-    }
-    return render(request, 'index.html', context)
+    return render(request, 'index.html', {})
 
 @require_POST
 def send_message(request):

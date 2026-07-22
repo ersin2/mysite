@@ -18,7 +18,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -27,15 +27,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-trdh%i%s^tum&3%*moig97p3$v1z)6r8vsat#==*6m7mu#8!s6')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG') == 'True'
-
-ALLOWED_HOSTS = ['*'] if DEBUG else ['yourdomain.com', 'localhost', '127.0.0.1']
-
 
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -60,16 +56,34 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# Pentagon-level Security Headers
-SECURE_BROWSER_XSS_FILTER = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
-X_FRAME_OPTIONS = 'DENY'
-CSRF_COOKIE_SECURE = not DEBUG
-SESSION_COOKIE_SECURE = not DEBUG
-SECURE_HSTS_SECONDS = 31536000 if not DEBUG else 0
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
-SECURE_SSL_REDIRECT = not DEBUG
+JAZZMIN_SETTINGS = {
+    "site_title": "Ersin Admin",
+    "site_header": "Ersin Portfolio",
+    "site_brand": "Ersin HQ",
+    "welcome_sign": "Welcome to the Engineering HQ",
+    "copyright": "Ersin",
+    "search_model": ["contact.ContactMessage"],
+    "topmenu_links": [
+        {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
+        {"name": "View Site", "url": "/", "new_window": True},
+    ],
+    "show_sidebar": True,
+    "navigation_expanded": True,
+    "order_with_respect_to": ["intro", "about_me", "my_portfolio", "contact"],
+    "icons": {
+        "intro.intro": "fas fa-home",
+        "about_me.about_me": "fas fa-user",
+        "my_portfolio.PortfolioProject": "fas fa-code",
+        "contact.contact": "fas fa-address-book",
+        "contact.ContactMessage": "fas fa-envelope",
+    },
+    "default_icon_parents": "fas fa-chevron-circle-right",
+    "default_icon_children": "fas fa-circle",
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "theme": "darkly",
+}
 
 ROOT_URLCONF = 'mysite.urls'
 
@@ -84,6 +98,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'apps.intro.context_processors.global_settings',
             ],
         },
     },

@@ -4,8 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ setting.title|default:"Ersin — Backend & AI Engineer" }}</title>
+    <title>{{ global_setting.title|default:"Ersin — Backend & AI Engineer" }}</title>
     <meta name="description" content="Backend & AI Engineer crafting intelligent systems, scalable APIs, and world-class infrastructure.">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="{{ global_setting.title|default:'Ersin - Backend & AI Engineer' }}" />
+    <meta property="og:description" content="Backend & AI Engineer crafting intelligent systems, scalable APIs, and world-class infrastructure." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yourdomain.com/" />
+    <meta property="og:image" content="https://yourdomain.com/static/img/og-preview.jpg" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ global_setting.title|default:'Ersin - Backend & AI Engineer' }}" />
+    <meta name="twitter:description" content="Backend & AI Engineer crafting intelligent systems, scalable APIs, and world-class infrastructure." />
+    <meta name="twitter:image" content="https://yourdomain.com/static/img/og-preview.jpg" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -90,7 +104,7 @@
             </h1>
 
             <p class="hero-desc reveal-up" data-delay="300">
-                {{ setting.about_page|default:"Backend engineer & AI architect designing the invisible infrastructure that powers modern digital products — high-throughput APIs, neural pipelines, and cloud-native systems at scale." }}
+                {{ global_setting.about_page|default:"Backend engineer & AI architect designing the invisible infrastructure that powers modern digital products — high-throughput APIs, neural pipelines, and cloud-native systems at scale." }}
             </p>
 
             <div class="hero-btns reveal-up" data-delay="380">
@@ -98,8 +112,8 @@
                     <span>View Projects</span>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
-                <a href="mailto:{{ contacts.email|default:'hi@ersin.dev' }}" class="mag-btn btn-ghost" data-magnetic>
-                    <span>{{ contacts.email|default:"hi@ersin.dev" }}</span>
+                <a href="mailto:{{ global_contacts.email|default:'hi@ersin.dev' }}" class="mag-btn btn-ghost" data-magnetic>
+                    <span>{{ global_contacts.email|default:"hi@ersin.dev" }}</span>
                 </a>
             </div>
 
@@ -415,17 +429,17 @@
                     <h2 class="contact-h2">Let's build<br>something<br><span class="grad-text">legendary.</span></h2>
                     <p>Currently available for senior roles and high-impact freelance projects. I respond within 24 hours.</p>
                     <div class="cinfo-list">
-                        {% if contacts.email %}
-                        <a href="mailto:{{ contacts.email }}" class="cinfo-row mag-btn" data-magnetic>
+                        {% if global_contacts.email %}
+                        <a href="mailto:{{ global_contacts.email }}" class="cinfo-row mag-btn" data-magnetic>
                             <div class="cinfo-ic">
                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="1.5" y="4" width="15" height="11" rx="2" stroke="#818CF8" stroke-width="1.3"/><path d="M1.5 6.5L9 11l7.5-4.5" stroke="#818CF8" stroke-width="1.3"/></svg>
                             </div>
-                            <div><span>Email</span><strong>{{ contacts.email }}</strong></div>
+                            <div><span>Email</span><strong>{{ global_contacts.email }}</strong></div>
                             <svg class="cinfo-arr" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H5.5M13 1V8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
                         </a>
                         {% endif %}
-                        {% if contacts.instagramm %}
-                        <a href="{{ contacts.instagramm }}" target="_blank" class="cinfo-row mag-btn" data-magnetic>
+                        {% if global_contacts.instagramm %}
+                        <a href="{{ global_contacts.instagramm }}" target="_blank" class="cinfo-row mag-btn" data-magnetic>
                             <div class="cinfo-ic" style="--ic:#EC4899">
                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="4" stroke="#EC4899" stroke-width="1.3"/><circle cx="9" cy="9" r="3.5" stroke="#EC4899" stroke-width="1.3"/><circle cx="13.5" cy="4.5" r="1" fill="#EC4899"/></svg>
                             </div>
@@ -433,12 +447,12 @@
                             <svg class="cinfo-arr" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H5.5M13 1V8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
                         </a>
                         {% endif %}
-                        {% if contacts.street %}
+                        {% if global_contacts.street %}
                         <div class="cinfo-row">
                             <div class="cinfo-ic" style="--ic:#06B6D4">
                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2C6.24 2 4 4.24 4 7c0 4.5 5 9 5 9s5-4.5 5-9c0-2.76-2.24-5-5-5zm0 7a2 2 0 110-4 2 2 0 010 4z" stroke="#06B6D4" stroke-width="1.3"/></svg>
                             </div>
-                            <div><span>Location</span><strong>{{ contacts.street }}</strong></div>
+                            <div><span>Location</span><strong>{{ global_contacts.street }}</strong></div>
                         </div>
                         {% endif %}
                     </div>

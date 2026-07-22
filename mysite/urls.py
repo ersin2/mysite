@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.views.generic import TemplateView
 from apps.intro.views import index
 from apps.contact.views import send_message
 from django.conf.urls.static import static 
@@ -22,6 +23,7 @@ from django.conf import settings
 
 
 urlpatterns = [
+    path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
     path('', index, name='index'), 
     path('secret-hq-admin/', admin.site.urls),
     path('contact/send/', send_message, name='send_message'),
