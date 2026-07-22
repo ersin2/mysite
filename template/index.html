@@ -4,373 +4,482 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI & Backend Architecture | Portfolio</title>
-    <meta name="description" content="Backend & AI Engineer specializing in scalable infrastructure, neural networks, and modern web systems.">
-    <meta property="og:title" content="Backend & AI Architecture">
-    <meta property="og:description" content="I architect the digital nervous systems for modern web applications.">
-    <meta property="og:type" content="website">
+    <title>{{ setting.title|default:"Ersin — Backend & AI Engineer" }}</title>
+    <meta name="description" content="Backend & AI Engineer crafting intelligent systems, scalable APIs, and world-class infrastructure.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=20.0">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=51.0">
 </head>
 <body>
 
-    <!-- Cursor -->
-    <div class="cursor-dot" id="cursor-dot"></div>
-    <div class="cursor-ring" id="cursor-ring"></div>
+<!-- Scroll progress -->
+<div class="scroll-progress" id="scroll-progress"></div>
 
-    <!-- Background -->
-    <div class="bg-grid"></div>
-    <div class="bg-glow bg-glow-1"></div>
-    <div class="bg-glow bg-glow-2"></div>
-    <div class="bg-glow bg-glow-3"></div>
+<!-- Particle canvas -->
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
 
-    <!-- Navigation -->
-    <nav class="nav" id="nav">
-        <div class="nav-inner">
-            <div class="nav-logo">
-                <span class="logo-dot"></span>
-                <span class="logo-text">BACKEND<span class="logo-accent">.AI</span></span>
+<!-- Giant snake parallax background -->
+<canvas id="snake-canvas" aria-hidden="true"></canvas>
+
+<!-- Noise -->
+<div class="noise" aria-hidden="true"></div>
+
+<!-- Cursor -->
+<div class="cur-dot" id="cur-dot"></div>
+<div class="cur-circle" id="cur-circle"></div>
+<div class="cur-text" id="cur-text"></div>
+
+<!-- ══════════ NAV ══════════ -->
+<header class="nav" id="nav">
+    <div class="nav-wrap">
+        <a class="logo" href="#">
+            <span class="logo-mark">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                    <path d="M11 1L21 6V16L11 21L1 16V6L11 1Z" stroke="url(#lg)" stroke-width="1.5"/>
+                    <circle cx="11" cy="11" r="3" fill="url(#lg)"/>
+                    <defs>
+                        <linearGradient id="lg" x1="1" y1="1" x2="21" y2="21" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#818CF8"/>
+                            <stop offset="1" stop-color="#EC4899"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </span>
+            <span class="logo-text">ersin<em>.dev</em></span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="#about"   class="nav-a" data-cursor="VIEW">About</a>
+            <a href="#work"    class="nav-a" data-cursor="VIEW">Work</a>
+            <a href="#skills"  class="nav-a" data-cursor="VIEW">Skills</a>
+            <a href="#contact" class="nav-a" data-cursor="VIEW">Contact</a>
+        </nav>
+
+        <div class="nav-end">
+            <div class="avail-pill">
+                <span class="avail-dot"></span>
+                <span>Open to work</span>
             </div>
-            <div class="nav-links">
-                <a href="#about" class="nav-link">About</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
-            <a href="mailto:{{ contacts.email|default:'contact@engineer.ai' }}" class="nav-cta">
-                <span>Hire Me</span>
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <a href="#contact" class="mag-btn nav-cta" data-magnetic>
+                <span>Let's Talk</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             </a>
         </div>
-    </nav>
+    </div>
+</header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero" id="about">
-            <div class="hero-inner">
-                <div class="hero-badge">
-                    <span class="badge-dot"></span>
-                    <span>Available for work</span>
-                </div>
-                <h1 class="hero-title">
-                    <span class="title-line">I Build</span>
-                    <span class="title-line gradient-text">Intelligent</span>
-                    <span class="title-line">Systems.</span>
-                </h1>
-                <p class="hero-desc">
-                    {{ setting.about_page|default:"Backend & AI Engineer crafting scalable infrastructure, neural pipelines, and high-performance web APIs that power the next generation of digital products." }}
-                </p>
-                <div class="hero-actions">
-                    <a href="#projects" class="btn-primary">
-                        View Projects
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
-                    <a href="#contact" class="btn-ghost">Get in Touch</a>
-                </div>
+<!-- ══════════ HERO ══════════ -->
+<section class="hero" id="home">
+    <div class="hero-wrap">
 
-                <!-- Stats Row -->
-                <div class="stats-row">
-                    <div class="stat-item">
-                        <span class="stat-num">50+</span>
-                        <span class="stat-label">Projects Shipped</span>
-                    </div>
-                    <div class="stat-divider"></div>
-                    <div class="stat-item">
-                        <span class="stat-num">5+</span>
-                        <span class="stat-label">Years Experience</span>
-                    </div>
-                    <div class="stat-divider"></div>
-                    <div class="stat-item">
-                        <span class="stat-num">99%</span>
-                        <span class="stat-label">Uptime SLA</span>
-                    </div>
-                </div>
+        <!-- Left: copy -->
+        <div class="hero-copy">
+            <div class="hero-badge reveal-up" data-delay="0">
+                <span class="badge-pulse"></span>
+                Backend &amp; AI Engineer
+                <span class="badge-sep">·</span>
+                Available Worldwide
             </div>
 
-            <!-- Floating Tech Orb -->
-            <div class="hero-orb">
-                <div class="orb-ring orb-ring-1"></div>
-                <div class="orb-ring orb-ring-2"></div>
-                <div class="orb-ring orb-ring-3"></div>
-                <div class="orb-core">
-                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M24 4L44 36H4L24 4Z" stroke="#00F0FF" stroke-width="1.5" fill="none" opacity="0.8"/>
-                        <circle cx="24" cy="24" r="8" stroke="#A855F7" stroke-width="1.5" fill="none" opacity="0.8"/>
-                        <path d="M10 24H14M34 24H38M24 10V14M24 34V38" stroke="#00F0FF" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-                    </svg>
-                </div>
-            </div>
-        </section>
+            <h1 class="hero-h1">
+                <span class="h1-word reveal-up" data-delay="60">I</span>
+                <span class="h1-word reveal-up" data-delay="100">Build</span><br>
+                <span class="h1-word h1-grad reveal-up" data-scramble data-delay="160">Intelligent</span><br>
+                <span class="h1-word reveal-up" data-delay="220">Systems.</span>
+            </h1>
 
-        <!-- Tech Stack Marquee -->
-        <div class="marquee-section">
-            <div class="marquee-track">
-                <div class="marquee-items">
-                    <span class="marquee-item">Python</span>
-                    <span class="marquee-sep">✦</span>
-                    <span class="marquee-item">Django</span>
-                    <span class="marquee-sep">✦</span>
-                    <span class="marquee-item">Neural Networks</span>
-                    <span class="marquee-sep">✦</span>
-                    <span class="marquee-item">PostgreSQL</span>
-                    <span class="marquee-sep">✦</span>
-                    <span class="marquee-item">Docker</span>
-                    <span class="marquee-sep">✦</span>
-                    <span class="marquee-item">REST APIs</span>
-                    <span class="marquee-sep">✦</span>
-                    <span class="marquee-item">Data Engineering</span>
-                    <span class="marquee-sep">✦</span>
-                    <span class="marquee-item">PyTorch</span>
-                    <span class="marquee-sep">✦</span>
-                    <span class="marquee-item">Redis</span>
-                    <span class="marquee-sep">✦</span>
-                    <span class="marquee-item">Kubernetes</span>
-                    <span class="marquee-sep">✦</span>
-                    <!-- Duplicate for seamless loop -->
-                    <span class="marquee-item">Python</span>
-                    <span class="marquee-sep">✦</span>
-                    <span class="marquee-item">Django</span>
-                    <span class="marquee-sep">✦</span>
-                    <span class="marquee-item">Neural Networks</span>
-                    <span class="marquee-sep">✦</span>
-                    <span class="marquee-item">PostgreSQL</span>
-                    <span class="marquee-sep">✦</span>
-                    <span class="marquee-item">Docker</span>
-                    <span class="marquee-sep">✦</span>
-                    <span class="marquee-item">REST APIs</span>
-                    <span class="marquee-sep">✦</span>
-                    <span class="marquee-item">Data Engineering</span>
-                    <span class="marquee-sep">✦</span>
-                    <span class="marquee-item">PyTorch</span>
-                    <span class="marquee-sep">✦</span>
-                    <span class="marquee-item">Redis</span>
-                    <span class="marquee-sep">✦</span>
-                    <span class="marquee-item">Kubernetes</span>
-                    <span class="marquee-sep">✦</span>
+            <p class="hero-desc reveal-up" data-delay="300">
+                {{ setting.about_page|default:"Backend engineer & AI architect designing the invisible infrastructure that powers modern digital products — high-throughput APIs, neural pipelines, and cloud-native systems at scale." }}
+            </p>
+
+            <div class="hero-btns reveal-up" data-delay="380">
+                <a href="#work" class="mag-btn btn-grad" data-magnetic data-cursor="VIEW">
+                    <span>View Projects</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a href="mailto:{{ contacts.email|default:'hi@ersin.dev' }}" class="mag-btn btn-ghost" data-magnetic>
+                    <span>{{ contacts.email|default:"hi@ersin.dev" }}</span>
+                </a>
+            </div>
+
+            <div class="hero-kpis reveal-up" data-delay="460">
+                <div class="kpi">
+                    <strong><span class="count" data-to="50">0</span>+</strong>
+                    <span>Projects shipped</span>
+                </div>
+                <div class="kpi-div"></div>
+                <div class="kpi">
+                    <strong><span class="count" data-to="5">0</span> yrs</strong>
+                    <span>Experience</span>
+                </div>
+                <div class="kpi-div"></div>
+                <div class="kpi">
+                    <strong><span class="count" data-to="99">0</span>%</strong>
+                    <span>Uptime SLA</span>
+                </div>
+                <div class="kpi-div"></div>
+                <div class="kpi">
+                    <strong><span class="count" data-to="12">0</span>k+</strong>
+                    <span>Req / sec peak</span>
                 </div>
             </div>
         </div>
 
-        <!-- Projects Section -->
-        <section class="projects-section" id="projects">
-            <div class="section-inner">
-                <div class="section-header">
-                    <span class="section-tag">// DEPLOYED_SYSTEMS</span>
-                    <h2 class="section-title">Featured Work</h2>
-                    <p class="section-sub">Production-grade systems built for scale and reliability.</p>
+        <!-- Right: terminal card -->
+        <div class="hero-visual reveal-up" data-delay="140">
+            <div class="terminal-card spin-border" data-tilt>
+                <div class="term-topbar">
+                    <div class="term-dots">
+                        <span style="background:#FF5F57"></span>
+                        <span style="background:#FFBD2E"></span>
+                        <span style="background:#28C840"></span>
+                    </div>
+                    <span class="term-fname">api_engine.py</span>
+                    <span class="term-git">⎇ main</span>
                 </div>
+                <div class="term-code">
+<pre><span class="ck">from</span> <span class="cm">neural_core</span> <span class="ck">import</span> <span class="cf">Pipeline</span>
+<span class="ck">from</span> <span class="cm">django.http</span> <span class="ck">import</span> <span class="cf">JsonResponse</span>
+<span class="ck">from</span> <span class="cm">auth</span> <span class="ck">import</span> <span class="cf">require_auth</span>
 
-                <div class="projects-grid">
-                    {% if projects %}
-                        {% for project in projects %}
-                        <div class="project-card {% if forloop.first %}project-card--featured{% endif %}">
-                            <div class="card-top">
-                                <div class="card-icon">
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="7" height="7" rx="1" stroke="#00F0FF" stroke-width="1.5"/><rect x="11" y="2" width="7" height="7" rx="1" stroke="#A855F7" stroke-width="1.5"/><rect x="2" y="11" width="7" height="7" rx="1" stroke="#A855F7" stroke-width="1.5"/><rect x="11" y="11" width="7" height="7" rx="1" stroke="#00F0FF" stroke-width="1.5"/></svg>
-                                </div>
-                                <div class="card-links">
-                                    {% if project.github_url %}
-                                    <a href="{{ project.github_url }}" target="_blank" class="card-link-btn" aria-label="GitHub">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                                    </a>
-                                    {% endif %}
-                                    {% if project.live_url %}
-                                    <a href="{{ project.live_url }}" target="_blank" class="card-link-btn" aria-label="Live Demo">
-                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H7M13 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                    </a>
-                                    {% endif %}
-                                </div>
-                            </div>
-                            <h3 class="card-title">{{ project.title }}</h3>
-                            <p class="card-desc">{{ project.description }}</p>
-                            <div class="card-tags">
-                                {% for tag in project.tech_tags.split %}
-                                <span class="tag">{{ tag|cut:"," }}</span>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        {% endfor %}
-                    {% else %}
-                        <!-- Sample project cards when DB is empty -->
-                        <div class="project-card project-card--featured">
-                            <div class="card-top">
-                                <div class="card-icon">
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="7" height="7" rx="1" stroke="#00F0FF" stroke-width="1.5"/><rect x="11" y="2" width="7" height="7" rx="1" stroke="#A855F7" stroke-width="1.5"/><rect x="2" y="11" width="7" height="7" rx="1" stroke="#A855F7" stroke-width="1.5"/><rect x="11" y="11" width="7" height="7" rx="1" stroke="#00F0FF" stroke-width="1.5"/></svg>
-                                </div>
-                                <div class="card-links">
-                                    <span class="card-link-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H7M13 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                                </div>
-                            </div>
-                            <h3 class="card-title">AI Vector Retrieval Engine</h3>
-                            <p class="card-desc">High-throughput semantic search API processing millions of embeddings with sub-100ms response time using pgvector and custom re-ranking models.</p>
-                            <div class="card-tags">
-                                <span class="tag">Python</span>
-                                <span class="tag">Django</span>
-                                <span class="tag">pgvector</span>
-                                <span class="tag">PyTorch</span>
-                            </div>
-                        </div>
-                        <div class="project-card">
-                            <div class="card-top">
-                                <div class="card-icon">
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#A855F7" stroke-width="1.5"/><path d="M10 6v4l3 3" stroke="#00F0FF" stroke-width="1.5" stroke-linecap="round"/></svg>
-                                </div>
-                            </div>
-                            <h3 class="card-title">Real-Time Data Pipeline</h3>
-                            <p class="card-desc">Event-driven streaming architecture ingesting 50K+ events/sec with Kafka and Faust stream processing.</p>
-                            <div class="card-tags">
-                                <span class="tag">Kafka</span>
-                                <span class="tag">Python</span>
-                                <span class="tag">Redis</span>
-                                <span class="tag">Docker</span>
-                            </div>
-                        </div>
-                        <div class="project-card">
-                            <div class="card-top">
-                                <div class="card-icon">
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 16l4-4 4 4 4-8" stroke="#00F0FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                </div>
-                            </div>
-                            <h3 class="card-title">Neural Monitoring Platform</h3>
-                            <p class="card-desc">Full-stack ML model monitoring with drift detection, performance degradation alerts, and automated retraining triggers.</p>
-                            <div class="card-tags">
-                                <span class="tag">FastAPI</span>
-                                <span class="tag">PostgreSQL</span>
-                                <span class="tag">Grafana</span>
-                                <span class="tag">K8s</span>
-                            </div>
-                        </div>
-                    {% endif %}
+<span class="cd">@require_auth</span>
+<span class="ck">async def</span> <span class="cf">inference</span>(<span class="cp">request</span>):
+    payload <span class="co">=</span> <span class="ck">await</span> <span class="cf">parse</span>(<span class="cp">request</span>)
+    result  <span class="co">=</span> <span class="ck">await</span> <span class="cf">Pipeline</span>.run(payload)
+
+    <span class="ck">return</span> <span class="cf">JsonResponse</span>({
+        <span class="cs">"status"</span><span class="co">:</span> <span class="cs">"200 OK"</span>,
+        <span class="cs">"latency_ms"</span><span class="co">:</span> <span class="cn">38</span>,
+        <span class="cs">"confidence"</span><span class="co">:</span> <span class="cn">0.97</span>,
+        <span class="cs">"output"</span><span class="co">:</span> result
+    })<span class="tcur"></span></pre>
+                </div>
+                <div class="term-status">
+                    <div class="ts-item"><span class="tsd green"></span>API Online</div>
+                    <div class="ts-item"><span class="tsd cyan"></span>38ms P99</div>
+                    <div class="ts-item"><span class="tsd purple"></span>GPU Active</div>
+                    <div class="ts-item"><span class="tsd amber"></span>99.98% up</div>
                 </div>
             </div>
-        </section>
 
-        <!-- Skills Section -->
-        <section class="skills-section">
-            <div class="section-inner">
-                <div class="skills-layout">
-                    <div class="skills-left">
-                        <span class="section-tag">// SKILL_MATRIX</span>
-                        <h2 class="section-title">Technical<br>Arsenal</h2>
-                        <p class="section-sub">Full-stack mastery from database architecture to neural model deployment.</p>
-                    </div>
-                    <div class="skills-right">
-                        <div class="skill-group">
-                            <span class="skill-group-label">Backend</span>
-                            <div class="skill-bars">
-                                <div class="skill-bar"><span class="skill-name">Python / Django</span><div class="skill-track"><div class="skill-fill" style="--w: 95%"></div></div></div>
-                                <div class="skill-bar"><span class="skill-name">FastAPI / REST</span><div class="skill-track"><div class="skill-fill" style="--w: 90%"></div></div></div>
-                                <div class="skill-bar"><span class="skill-name">PostgreSQL / Redis</span><div class="skill-track"><div class="skill-fill" style="--w: 88%"></div></div></div>
-                            </div>
-                        </div>
-                        <div class="skill-group">
-                            <span class="skill-group-label">AI / ML</span>
-                            <div class="skill-bars">
-                                <div class="skill-bar"><span class="skill-name">PyTorch / TensorFlow</span><div class="skill-track"><div class="skill-fill" style="--w: 85%"></div></div></div>
-                                <div class="skill-bar"><span class="skill-name">Data Engineering</span><div class="skill-track"><div class="skill-fill" style="--w: 80%"></div></div></div>
-                                <div class="skill-bar"><span class="skill-name">MLOps / Deployment</span><div class="skill-track"><div class="skill-fill" style="--w: 82%"></div></div></div>
-                            </div>
-                        </div>
-                        <div class="skill-group">
-                            <span class="skill-group-label">DevOps</span>
-                            <div class="skill-bars">
-                                <div class="skill-bar"><span class="skill-name">Docker / Kubernetes</span><div class="skill-track"><div class="skill-fill" style="--w: 87%"></div></div></div>
-                                <div class="skill-bar"><span class="skill-name">CI/CD Pipelines</span><div class="skill-track"><div class="skill-fill" style="--w: 83%"></div></div></div>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Floating badges -->
+            <div class="fb fb-1 reveal-up" data-delay="500">
+                <div class="fb-icon" style="--c:#34D399">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="#34D399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </div>
+                <div><strong>99.98%</strong><span>Uptime SLA</span></div>
             </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="contact-section" id="contact">
-            <div class="section-inner">
-                <div class="contact-layout">
-                    <div class="contact-left">
-                        <span class="section-tag">// OPEN_CHANNEL</span>
-                        <h2 class="section-title">Let's Build<br>Something<br><span class="gradient-text">Great.</span></h2>
-                        <div class="contact-info">
-                            {% if contacts.email %}
-                            <a href="mailto:{{ contacts.email }}" class="contact-item">
-                                <div class="contact-item-icon">
-                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke="#00F0FF" stroke-width="1.3"/><path d="M2 6l7 5 7-5" stroke="#00F0FF" stroke-width="1.3"/></svg>
-                                </div>
-                                <div>
-                                    <span class="contact-item-label">Email</span>
-                                    <span class="contact-item-val">{{ contacts.email }}</span>
-                                </div>
-                            </a>
-                            {% endif %}
-                            {% if contacts.instagramm %}
-                            <a href="{{ contacts.instagramm }}" target="_blank" class="contact-item">
-                                <div class="contact-item-icon">
-                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="4" stroke="#A855F7" stroke-width="1.3"/><circle cx="9" cy="9" r="3.5" stroke="#A855F7" stroke-width="1.3"/><circle cx="13" cy="5" r="1" fill="#A855F7"/></svg>
-                                </div>
-                                <div>
-                                    <span class="contact-item-label">Instagram</span>
-                                    <span class="contact-item-val">@profile</span>
-                                </div>
-                            </a>
-                            {% endif %}
-                            {% if contacts.street %}
-                            <div class="contact-item">
-                                <div class="contact-item-icon">
-                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2C6.24 2 4 4.24 4 7c0 4.25 5 9 5 9s5-4.75 5-9c0-2.76-2.24-5-5-5zm0 6.5A1.5 1.5 0 117 7a1.5 1.5 0 012 1.5z" stroke="#00F0FF" stroke-width="1.3"/></svg>
-                                </div>
-                                <div>
-                                    <span class="contact-item-label">Location</span>
-                                    <span class="contact-item-val">{{ contacts.street }}</span>
-                                </div>
-                            </div>
-                            {% endif %}
-                        </div>
-                    </div>
-
-                    <div class="contact-right">
-                        <div class="contact-form-card">
-                            <form id="contact-form" class="contact-form">
-                                {% csrf_token %}
-                                <div class="form-group">
-                                    <label for="form-name" class="form-label">Full Name</label>
-                                    <input type="text" id="form-name" name="name" placeholder="John Doe" required class="form-input">
-                                </div>
-                                <div class="form-group">
-                                    <label for="form-email" class="form-label">Email Address</label>
-                                    <input type="email" id="form-email" name="email" placeholder="john@company.com" required class="form-input">
-                                </div>
-                                <div class="form-group">
-                                    <label for="form-message" class="form-label">Message</label>
-                                    <textarea id="form-message" name="message" rows="4" placeholder="Tell me about your project..." required class="form-input form-textarea"></textarea>
-                                </div>
-                                <button type="submit" class="submit-btn" id="submit-btn">
-                                    <span class="submit-text">Send Message</span>
-                                    <div class="submit-arrow">
-                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                    </div>
-                                </button>
-                                <div id="form-status" class="form-status"></div>
-                            </form>
-                        </div>
-                    </div>
+            <div class="fb fb-2 reveal-up" data-delay="560">
+                <div class="fb-icon" style="--c:#818CF8">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="9" width="3" height="6" rx="1" fill="#818CF8" opacity=".7"/><rect x="6" y="6" width="3" height="9" rx="1" fill="#818CF8"/><rect x="11" y="3" width="3" height="12" rx="1" fill="#818CF8" opacity=".5"/></svg>
                 </div>
+                <div><strong>12k / sec</strong><span>Peak throughput</span></div>
             </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-inner">
-            <span class="footer-logo">BACKEND<span class="logo-accent">.AI</span></span>
-            <span class="footer-copy">Built with Django & passion. All systems operational.</span>
-            <span class="footer-status">
-                <span class="status-dot"></span>
-                Online
-            </span>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <script src="{% static 'js/main.js' %}?v=20.0"></script>
+<!-- ══════════ MARQUEE ══════════ -->
+<div class="ticker-bar" aria-hidden="true">
+    <div class="ticker-grad left"></div>
+    <div class="ticker-grad right"></div>
+    <div class="ticker-overflow">
+        <div class="ticker-row">
+            <span>Python</span><i>✦</i><span>Django</span><i>✦</i><span>FastAPI</span><i>✦</i>
+            <span>PyTorch</span><i>✦</i><span>TensorFlow</span><i>✦</i><span>PostgreSQL</span><i>✦</i>
+            <span>Redis</span><i>✦</i><span>Docker</span><i>✦</i><span>Kubernetes</span><i>✦</i>
+            <span>Kafka</span><i>✦</i><span>GraphQL</span><i>✦</i><span>MLOps</span><i>✦</i>
+            <span>AWS</span><i>✦</i><span>Terraform</span><i>✦</i><span>Celery</span><i>✦</i><span>CI/CD</span><i>✦</i>
+            <!-- dupe -->
+            <span>Python</span><i>✦</i><span>Django</span><i>✦</i><span>FastAPI</span><i>✦</i>
+            <span>PyTorch</span><i>✦</i><span>TensorFlow</span><i>✦</i><span>PostgreSQL</span><i>✦</i>
+            <span>Redis</span><i>✦</i><span>Docker</span><i>✦</i><span>Kubernetes</span><i>✦</i>
+            <span>Kafka</span><i>✦</i><span>GraphQL</span><i>✦</i><span>MLOps</span><i>✦</i>
+            <span>AWS</span><i>✦</i><span>Terraform</span><i>✦</i><span>Celery</span><i>✦</i><span>CI/CD</span><i>✦</i>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════ ABOUT BENTO ══════════ -->
+<section class="section" id="about">
+    <div class="ctr">
+        <div class="sec-hd reveal-up">
+            <span class="sec-tag">// About</span>
+            <h2>The engineer<br>behind the code.</h2>
+        </div>
+        <div class="bento-about">
+            <div class="ba-card ba-bio reveal-up" data-delay="40" data-tilt>
+                <div class="ba-label">Bio</div>
+                <p>I specialize in architecting the invisible backbone of modern applications — the high-throughput, fault-tolerant systems that handle millions of users without breaking a sweat. Passionate about AI/ML at scale and clean system design.</p>
+                <div class="ba-tags">
+                    <span>System Design</span><span>Distributed Systems</span><span>AI Infrastructure</span>
+                </div>
+            </div>
+            <div class="ba-card ba-stat reveal-up" data-delay="80" data-tilt>
+                <div class="big-num gradient-n">50<span>+</span></div>
+                <div class="ba-label">Production Systems</div>
+                <p>Deployed and maintained across multiple industries</p>
+            </div>
+            <div class="ba-card ba-stat reveal-up" data-delay="120" data-tilt>
+                <div class="big-num gradient-n" style="--g1:#06B6D4;--g2:#818CF8">5<span>yr</span></div>
+                <div class="ba-label">Years of Experience</div>
+                <p>Building backends & intelligent systems</p>
+            </div>
+            <div class="ba-card ba-process reveal-up" data-delay="160" data-tilt>
+                <div class="ba-label">How I work</div>
+                <div class="process-steps">
+                    <div class="ps"><span class="ps-n">01</span><span class="ps-t">Architecture First</span></div>
+                    <div class="ps"><span class="ps-n">02</span><span class="ps-t">Build for Scale</span></div>
+                    <div class="ps"><span class="ps-n">03</span><span class="ps-t">Observe & Iterate</span></div>
+                    <div class="ps"><span class="ps-n">04</span><span class="ps-t">Ship & Monitor</span></div>
+                </div>
+            </div>
+            <div class="ba-card ba-stack reveal-up" data-delay="200" data-tilt>
+                <div class="ba-label">Core Stack</div>
+                <div class="stack-icons">
+                    <div class="si" style="--c:#3B82F6" title="Python">Py</div>
+                    <div class="si" style="--c:#06B6D4" title="Django">Dj</div>
+                    <div class="si" style="--c:#FF7262" title="FastAPI">FA</div>
+                    <div class="si" style="--c:#EE4C2C" title="PyTorch">PT</div>
+                    <div class="si" style="--c:#336791" title="PostgreSQL">PG</div>
+                    <div class="si" style="--c:#DC382D" title="Redis">Re</div>
+                    <div class="si" style="--c:#2496ED" title="Docker">Do</div>
+                    <div class="si" style="--c:#326CE5" title="Kubernetes">K8</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════ WORK ══════════ -->
+<section class="section section-alt" id="work">
+    <div class="ctr">
+        <div class="sec-hd reveal-up">
+            <span class="sec-tag">// Selected Work</span>
+            <h2>What I've shipped.</h2>
+            <p>Production systems built for reliability, intelligence, and performance.</p>
+        </div>
+
+        <div class="work-grid">
+            {% if projects %}
+                {% for project in projects %}
+                <div class="wcard {% if forloop.first %}wcard-wide{% endif %} reveal-up" data-delay="{{ forloop.counter0|add:'1' }}00" data-tilt>
+                    <div class="wcard-top">
+                        <span class="wcard-num">{{ forloop.counter|stringformat:"02d" }}</span>
+                        <div class="wcard-actions">
+                            {% if project.github_url %}<a href="{{ project.github_url }}" target="_blank" class="icon-btn" aria-label="GitHub" data-cursor="OPEN">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.21 11.39.6.11.82-.26.82-.57v-2.23c-3.34.73-4.03-1.61-4.03-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.73.08-.73 1.2.09 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016 0c2.3-1.55 3.3-1.23 3.3-1.23.64 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .31.22.69.82.57C20.57 21.8 24 17.31 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                            </a>{% endif %}
+                            {% if project.live_url %}<a href="{{ project.live_url }}" target="_blank" class="icon-btn" aria-label="Live" data-cursor="OPEN">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1.5 12.5L12.5 1.5M12.5 1.5H5M12.5 1.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                            </a>{% endif %}
+                        </div>
+                    </div>
+                    <h3 class="wcard-title">{{ project.title }}</h3>
+                    <p class="wcard-desc">{{ project.description }}</p>
+                    <div class="wcard-tags">{% for t in project.tech_tags.split %}<span class="chip">{{ t|cut:"," }}</span>{% endfor %}</div>
+                    <div class="wcard-foot"><span class="live-ind"><span></span>Live in production</span></div>
+                </div>
+                {% endfor %}
+            {% else %}
+            <div class="wcard wcard-wide reveal-up" data-delay="60" data-tilt>
+                <div class="wcard-top">
+                    <span class="wcard-num">01</span>
+                    <div class="wcard-actions">
+                        <a href="#" class="icon-btn" aria-label="GitHub" data-cursor="OPEN"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.44 9.8 8.21 11.39.6.11.82-.26.82-.57v-2.23c-3.34.73-4.03-1.61-4.03-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.08-.73.08-.73 1.2.09 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016 0c2.3-1.55 3.3-1.23 3.3-1.23.64 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .31.22.69.82.57C20.57 21.8 24 17.31 24 12c0-6.63-5.37-12-12-12z"/></svg></a>
+                        <a href="#" class="icon-btn" aria-label="Live" data-cursor="OPEN"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1.5 12.5L12.5 1.5M12.5 1.5H5M12.5 1.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+                    </div>
+                </div>
+                <h3 class="wcard-title">AI Vector Search Engine</h3>
+                <p class="wcard-desc">High-throughput semantic search API processing 50M+ embeddings with sub-40ms P99 latency. Custom re-ranking models, smart caching layers, and automatic index optimization for enterprise-scale retrieval.</p>
+                <div class="wcard-tags"><span class="chip">Python</span><span class="chip">Django</span><span class="chip">pgvector</span><span class="chip">PyTorch</span><span class="chip">Redis</span></div>
+                <div class="wcard-foot"><span class="live-ind"><span></span>Live in production</span></div>
+            </div>
+            <div class="wcard reveal-up" data-delay="120" data-tilt>
+                <div class="wcard-top"><span class="wcard-num">02</span></div>
+                <h3 class="wcard-title">Real-Time Event Pipeline</h3>
+                <p class="wcard-desc">Event-driven streaming system ingesting 50K+ events/sec with exactly-once delivery and intelligent fault tolerance.</p>
+                <div class="wcard-tags"><span class="chip">Kafka</span><span class="chip">Python</span><span class="chip">Docker</span><span class="chip">Redis</span></div>
+                <div class="wcard-foot"><span class="live-ind"><span></span>Live in production</span></div>
+            </div>
+            <div class="wcard reveal-up" data-delay="180" data-tilt>
+                <div class="wcard-top"><span class="wcard-num">03</span></div>
+                <h3 class="wcard-title">ML Monitoring Platform</h3>
+                <p class="wcard-desc">Full-stack model observability with drift detection, performance alerts, and automated retraining triggers.</p>
+                <div class="wcard-tags"><span class="chip">FastAPI</span><span class="chip">Grafana</span><span class="chip">K8s</span><span class="chip">Prometheus</span></div>
+                <div class="wcard-foot"><span class="live-ind"><span></span>Live in production</span></div>
+            </div>
+            <div class="wcard reveal-up" data-delay="240" data-tilt>
+                <div class="wcard-top"><span class="wcard-num">04</span></div>
+                <h3 class="wcard-title">Neural Recommendation System</h3>
+                <p class="wcard-desc">Hybrid collaborative + content-based engine serving 10M+ users with personalized recommendations at millisecond latency.</p>
+                <div class="wcard-tags"><span class="chip">PyTorch</span><span class="chip">Celery</span><span class="chip">AWS</span><span class="chip">PostgreSQL</span></div>
+                <div class="wcard-foot"><span class="live-ind"><span></span>Live in production</span></div>
+            </div>
+            <div class="wcard reveal-up" data-delay="300" data-tilt>
+                <div class="wcard-top"><span class="wcard-num">05</span></div>
+                <h3 class="wcard-title">Cloud-Native API Gateway</h3>
+                <p class="wcard-desc">Kubernetes-orchestrated gateway with 99.99% uptime SLA, intelligent rate limiting, OAuth2, and multi-service traffic shaping.</p>
+                <div class="wcard-tags"><span class="chip">Kubernetes</span><span class="chip">Terraform</span><span class="chip">Nginx</span><span class="chip">Go</span></div>
+                <div class="wcard-foot"><span class="live-ind"><span></span>Live in production</span></div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- ══════════ SKILLS ══════════ -->
+<section class="section" id="skills">
+    <div class="ctr">
+        <div class="skills-wrap">
+            <div class="skills-lhs reveal-up">
+                <span class="sec-tag">// Skill Matrix</span>
+                <h2>Built to<br><span class="grad-text">outlast.</span></h2>
+                <p>From raw data ingestion to neural inference — every layer mastered.</p>
+                <div class="s-chips">
+                    <span class="s-chip on">Python</span><span class="s-chip">Django</span><span class="s-chip on">FastAPI</span>
+                    <span class="s-chip">PostgreSQL</span><span class="s-chip on">Redis</span><span class="s-chip">Docker</span>
+                    <span class="s-chip on">Kubernetes</span><span class="s-chip">PyTorch</span><span class="s-chip">TensorFlow</span>
+                    <span class="s-chip on">Kafka</span><span class="s-chip">Celery</span><span class="s-chip">AWS</span>
+                    <span class="s-chip">GraphQL</span><span class="s-chip on">CI/CD</span><span class="s-chip">Terraform</span>
+                </div>
+            </div>
+            <div class="skills-rhs">
+                <div class="sbar reveal-up" data-delay="40"><div class="sbar-meta"><span>Python / Django</span><em>95</em></div><div class="sbar-track"><div class="sbar-fill" data-w="95"></div></div></div>
+                <div class="sbar reveal-up" data-delay="80"><div class="sbar-meta"><span>FastAPI / REST APIs</span><em>92</em></div><div class="sbar-track"><div class="sbar-fill" data-w="92"></div></div></div>
+                <div class="sbar reveal-up" data-delay="120"><div class="sbar-meta"><span>PostgreSQL / Redis</span><em>90</em></div><div class="sbar-track"><div class="sbar-fill" data-w="90"></div></div></div>
+                <div class="sbar reveal-up" data-delay="160"><div class="sbar-meta"><span>PyTorch / TensorFlow</span><em>86</em></div><div class="sbar-track"><div class="sbar-fill" data-w="86"></div></div></div>
+                <div class="sbar reveal-up" data-delay="200"><div class="sbar-meta"><span>Docker / Kubernetes</span><em>88</em></div><div class="sbar-track"><div class="sbar-fill" data-w="88"></div></div></div>
+                <div class="sbar reveal-up" data-delay="240"><div class="sbar-meta"><span>MLOps / Data Engineering</span><em>83</em></div><div class="sbar-track"><div class="sbar-fill" data-w="83"></div></div></div>
+                <div class="sbar reveal-up" data-delay="280"><div class="sbar-meta"><span>Cloud Infrastructure (AWS)</span><em>80</em></div><div class="sbar-track"><div class="sbar-fill" data-w="80"></div></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════ PROCESS ══════════ -->
+<section class="section section-alt" id="process">
+    <div class="ctr">
+        <div class="sec-hd reveal-up" style="margin-bottom:4rem">
+            <span class="sec-tag">// Process</span>
+            <h2>How I work.</h2>
+            <p>From kickoff to production, a proven engineering playbook.</p>
+        </div>
+        <div class="process-grid">
+            <div class="proc-card reveal-up" data-delay="40" data-tilt>
+                <span class="proc-num">01</span>
+                <div class="proc-icon">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="3" width="10" height="10" rx="2" stroke="#818CF8" stroke-width="1.5"/><rect x="15" y="3" width="10" height="10" rx="2" stroke="#EC4899" stroke-width="1.5"/><rect x="3" y="15" width="10" height="10" rx="2" stroke="#EC4899" stroke-width="1.5"/><rect x="15" y="15" width="10" height="10" rx="2" stroke="#818CF8" stroke-width="1.5"/></svg>
+                </div>
+                <h3>Architecture First</h3>
+                <p>Design system boundaries, data flows, and API contracts before writing a line of code.</p>
+            </div>
+            <div class="proc-card reveal-up" data-delay="100" data-tilt>
+                <span class="proc-num">02</span>
+                <div class="proc-icon">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4v20M4 14h20" stroke="#06B6D4" stroke-width="1.5" stroke-linecap="round"/><circle cx="14" cy="14" r="10" stroke="#818CF8" stroke-width="1.5"/></svg>
+                </div>
+                <h3>Build for Scale</h3>
+                <p>Engineering decisions made with 100x growth in mind — horizontal scaling, caching, and async by default.</p>
+            </div>
+            <div class="proc-card reveal-up" data-delay="160" data-tilt>
+                <span class="proc-num">03</span>
+                <div class="proc-icon">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 22l5-8 5 4 5-10 5 6" stroke="#34D399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h3>Observe Everything</h3>
+                <p>Full observability stack: distributed tracing, custom dashboards, anomaly alerts, and SLA tracking.</p>
+            </div>
+            <div class="proc-card reveal-up" data-delay="220" data-tilt>
+                <span class="proc-num">04</span>
+                <div class="proc-icon">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 3l2.8 8.6h9.1L18.4 17l2.7 8.6L14 21.2l-7.1 4.4L9.6 17 2.1 11.6h9.1L14 3z" stroke="#F59E0B" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                </div>
+                <h3>Ship & Iterate</h3>
+                <p>CI/CD pipelines, blue-green deployments, and automated rollbacks ensure zero-downtime releases.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════ CONTACT ══════════ -->
+<section class="section" id="contact">
+    <div class="ctr">
+        <div class="contact-shell reveal-up">
+            <div class="contact-glow-1"></div>
+            <div class="contact-glow-2"></div>
+            <div class="contact-body">
+                <div class="contact-lhs">
+                    <span class="sec-tag">// Open Channel</span>
+                    <h2 class="contact-h2">Let's build<br>something<br><span class="grad-text">legendary.</span></h2>
+                    <p>Currently available for senior roles and high-impact freelance projects. I respond within 24 hours.</p>
+                    <div class="cinfo-list">
+                        {% if contacts.email %}
+                        <a href="mailto:{{ contacts.email }}" class="cinfo-row mag-btn" data-magnetic>
+                            <div class="cinfo-ic">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="1.5" y="4" width="15" height="11" rx="2" stroke="#818CF8" stroke-width="1.3"/><path d="M1.5 6.5L9 11l7.5-4.5" stroke="#818CF8" stroke-width="1.3"/></svg>
+                            </div>
+                            <div><span>Email</span><strong>{{ contacts.email }}</strong></div>
+                            <svg class="cinfo-arr" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H5.5M13 1V8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                        </a>
+                        {% endif %}
+                        {% if contacts.instagramm %}
+                        <a href="{{ contacts.instagramm }}" target="_blank" class="cinfo-row mag-btn" data-magnetic>
+                            <div class="cinfo-ic" style="--ic:#EC4899">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="4" stroke="#EC4899" stroke-width="1.3"/><circle cx="9" cy="9" r="3.5" stroke="#EC4899" stroke-width="1.3"/><circle cx="13.5" cy="4.5" r="1" fill="#EC4899"/></svg>
+                            </div>
+                            <div><span>Instagram</span><strong>@profile</strong></div>
+                            <svg class="cinfo-arr" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H5.5M13 1V8.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                        </a>
+                        {% endif %}
+                        {% if contacts.street %}
+                        <div class="cinfo-row">
+                            <div class="cinfo-ic" style="--ic:#06B6D4">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2C6.24 2 4 4.24 4 7c0 4.5 5 9 5 9s5-4.5 5-9c0-2.76-2.24-5-5-5zm0 7a2 2 0 110-4 2 2 0 010 4z" stroke="#06B6D4" stroke-width="1.3"/></svg>
+                            </div>
+                            <div><span>Location</span><strong>{{ contacts.street }}</strong></div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <form class="contact-form" id="contact-form">
+                    {% csrf_token %}
+                    <div class="cf-row">
+                        <div class="cf-field">
+                            <label for="fn">Name</label>
+                            <input id="fn" name="name" type="text" placeholder="Your name" required autocomplete="name">
+                        </div>
+                        <div class="cf-field">
+                            <label for="fe">Email</label>
+                            <input id="fe" name="email" type="email" placeholder="you@example.com" required autocomplete="email">
+                        </div>
+                    </div>
+                    <div class="cf-field">
+                        <label for="fm">Message</label>
+                        <textarea id="fm" name="message" rows="5" placeholder="Tell me about your project, timeline, and goals..." required></textarea>
+                    </div>
+                    <button type="submit" class="cf-submit mag-btn" id="cf-btn" data-magnetic>
+                        <span id="cf-txt">Send Message</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <div class="cf-shimmer"></div>
+                    </button>
+                    <div id="cf-msg" class="cf-msg"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+    <div class="ctr footer-inner">
+        <a class="logo footer-logo" href="#">ersin<em>.dev</em></a>
+        <span class="footer-copy">Designed &amp; engineered with obsession.</span>
+        <div class="footer-status"><span class="fp-pulse"></span>All systems nominal</div>
+    </div>
+</footer>
+
+<script src="{% static 'js/main.js' %}?v=51.0"></script>
 </body>
 </html>
