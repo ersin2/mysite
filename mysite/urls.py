@@ -23,7 +23,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('', index, name='index'), 
-    path('admin/', admin.site.urls),
+    path('secret-hq-admin/', admin.site.urls),
     path('contact/send/', send_message, name='send_message'),
 ]
 if settings.DEBUG:
