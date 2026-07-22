@@ -14,15 +14,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.views.generic import TemplateView
 from apps.intro.views import index
 from apps.contact.views import send_message
+from apps.my_portfolio.api_views import PortfolioProjectViewSet
+from rest_framework import routers
 from django.conf.urls.static import static 
 from django.conf import settings
 
+router = routers.DefaultRouter()
+router.register(r'projects', PortfolioProjectViewSet)
 
 urlpatterns = [
+    path('api/', include(router.urls)),
     path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
     path('', index, name='index'), 
     path('secret-hq-admin/', admin.site.urls),
