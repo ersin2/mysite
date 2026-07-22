@@ -16,13 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from apps.intro.views import index
+from apps.contact.views import send_message
 from django.conf.urls.static import static 
 from django.conf import settings
 
 
 urlpatterns = [
-    path('',index), 
+    path('', index, name='index'), 
     path('admin/', admin.site.urls),
+    path('contact/send/', send_message, name='send_message'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

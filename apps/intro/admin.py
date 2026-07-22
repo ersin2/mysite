@@ -1,4 +1,7 @@
 from django.contrib import admin
 from apps.intro.models import intro
-# Register your models here.
-admin.site.register(intro)
+
+@admin.register(intro)
+class IntroAdmin(admin.ModelAdmin):
+    list_display = ('title', 'about_page')
+    search_fields = ('title',)

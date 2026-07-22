@@ -1,198 +1,132 @@
-jQuery(function ($) {
+/* main.js v20.0 — clean, no syntax errors */
+document.addEventListener("DOMContentLoaded", () => {
 
-    $(document).ready(function () {
-        "use strict"
-
-		//Scrolling feature 
-
-        $('.page-scroll a').on('click', function (event) {
-            var $anchor = $(this);
-            $('html, body').stop().animate({
-                scrollTop: $($anchor.attr('href')).offset().top
-            }, 1500, 'easeInOutExpo');
-            event.preventDefault();
-        });
-		
-        //	Back Top Link
-
-        var offset =100;
-        var duration = 500;
-        $(window).scroll(function () {
-            if ($(this).scrollTop() > offset) {
-                $('.back-to-top').fadeIn(400);
+    /* ---- 1. NAV SCROLL EFFECT ---- */
+    const nav = document.getElementById("nav");
+    if (nav) {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 30) {
+                nav.classList.add("scrolled");
             } else {
-                $('.back-to-top').fadeOut(400);
+                nav.classList.remove("scrolled");
             }
-        });     		
-		
-        //Owl-sliders
-		
-		$("#owl-services").owlCarousel({
-			dots: true,
-			loop: true,
-			autoplay: false,
-			nav: true,
-			margin:10,
-			navText: [
-				"<i class='fa fa-chevron-left'></i>",
-				"<i class='fa fa-chevron-right'></i>"
-			],
-			 responsive: {
-				1: {items: 1,},
-				991: {items: 3,},
-			}
-		});
-		
-		$("#owl-about").owlCarousel({
-			dots: true,
-			loop: true,
-			autoplay: false,
-			nav: false,
-			margin:20,
-			 responsive: {
-				1: {items: 1,},
-				991: {items: 1,},
-			}
-		});
-		
-		$("#owl-icons").owlCarousel({
-			dots: true,
-			loop: true,
-			autoplay: false,
-			nav: true,
-			navText: [
-				"<i class='fa fa-chevron-left'></i>",
-				"<i class='fa fa-chevron-right'></i>"
-			],
-			margin:5,
-			 responsive: {
-				1: {items: 1,},
-				991: {items: 3,},
-			}
-		});
-		
-		$("#owl-testimonial").owlCarousel({
-          dots: true,
-			loop: true,
-			autoplay: false,
-			nav: false,
-			margin:30,
-			 responsive: {
-				1: {items: 1,},
-				991: {items: 2,},
-			}
+        }, { passive: true });
+    }
+
+    /* ---- 2. CUSTOM CURSOR ---- */
+    const dot = document.getElementById("cursor-dot");
+    const ring = document.getElementById("cursor-ring");
+    if (dot && ring && window.matchMedia("(pointer: fine)").matches) {
+        document.body.classList.add("has-cursor");
+        let mx = 0, my = 0, rx = 0, ry = 0;
+        window.addEventListener("mousemove", (e) => {
+            mx = e.clientX;
+            my = e.clientY;
+            dot.style.left = mx + "px";
+            dot.style.top  = my + "px";
+        }, { passive: true });
+        const animRing = () => {
+            rx += (mx - rx) * 0.18;
+            ry += (my - ry) * 0.18;
+            ring.style.left = rx + "px";
+            ring.style.top  = ry + "px";
+            requestAnimationFrame(animRing);
+        };
+        animRing();
+        document.querySelectorAll("a, button, .project-card, .contact-item, .nav-cta").forEach((el) => {
+            el.addEventListener("mouseenter", () => ring.classList.add("hover"));
+            el.addEventListener("mouseleave", () => ring.classList.remove("hover"));
         });
-		
-		$("#owl-blog").owlCarousel({
-          dots: true,
-			loop: true,
-			autoplay: false,
-			nav: false,
-			margin:30,
-			 responsive: {
-				1: {items: 1,},
-				991: {items: 3,},
-			}
-        });	
-		
-		$("#owl-team").owlCarousel({
-			dots: true,
-			loop: true,
-			autoplay: false,
-			nav: true,
-			margin:15,
-			navText: [
-				"<i class='fa fa-chevron-left'></i>",
-				"<i class='fa fa-chevron-right'></i>"
-			],
-			 responsive: {
-				1: {items: 1,},
-				991: {items: 3,},
-			}
-		});				
-		
-		// Pretty Photo
+    }
 
-        $("a[data-gal^='prettyPhoto']").prettyPhoto({
-            hook: 'data-gal'
-        });
-        ({
-            animation_speed: 'normal',
-            opacity: 1,
-            show_title: true,
-            allow_resize: true,
-            counter_separator_label: '/',
-            theme: 'light_square',
-            /* light_rounded / dark_rounded / light_square / dark_square / facebook */
-        });
+    /* ---- 3. SCROLL REVEAL ---- */
+    const revealEls = document.querySelectorAll(
+        ".hero-inner, .hero-orb, .project-card, .skill-group, .contact-left, .contact-form-card, .section-header"
+    );
+    revealEls.forEach((el) => {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(28px)";
+        el.style.transition = "opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1)";
+    });
 
-		
-    });// end document ready function
-
-    //On Click  function
-	$(document).on('click',function(){
-		
-		//Navbar toggle
-		$('.navbar .collapse').collapse('hide');
-		
-	})	
-	
-	
-	// Window load function
-
-    $(window).load(function () {   
-
-	     // Page Preloader 	
-
-        $("#loading").fadeOut(1000);
-		
-        //Load Skrollr
-
-		var skr0llr = skrollr.init({
-			mobileCheck: function() {
-                //hack - forces mobile version to be off
-                return false;
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const delay = parseFloat(el.dataset.delay || "0");
+                setTimeout(() => {
+                    el.style.opacity = "1";
+                    el.style.transform = "translateY(0)";
+                }, delay);
+                revealObserver.unobserve(el);
             }
-		});			
-
-        //Portfolio Isotope 
-		
-        var $container = $('#lightbox');
-        $container.isotope({
-            filter: '*',
-            animationOptions: {
-                duration: 750,
-                easing: 'linear',
-                queue: false,
-				layoutMode : 'masonry'
-            }
-
         });
-		$(window).smartresize(function(){
-			$container.isotope({
-			columnWidth: '.col-sm-3'
-			});
-		});
-		
+    }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
 
-		//Portfolio Nav Filter
+    revealEls.forEach((el, i) => {
+        el.dataset.delay = String(i * 60);
+        revealObserver.observe(el);
+    });
 
-        $('.cat a').on('click', function () {
-            $('.cat .active').removeClass('active');
-            $(this).addClass('active');
-
-            var selector = $(this).attr('data-filter');
-            $container.isotope({
-                filter: selector,
-                animationOptions: {
-                    duration: 750,
-                    easing: 'linear',
-                    queue: false
+    /* ---- 4. SKILL BAR ANIMATION ---- */
+    const skillFills = document.querySelectorAll(".skill-fill");
+    if (skillFills.length > 0) {
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("animated");
+                    skillObserver.unobserve(entry.target);
                 }
             });
-            return false;
+        }, { threshold: 0.3 });
+        skillFills.forEach((el) => skillObserver.observe(el));
+    }
+
+    /* ---- 5. PROJECT CARD MOUSE GLOW ---- */
+    document.querySelectorAll(".project-card").forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+            const rect = card.getBoundingClientRect();
+            card.style.setProperty("--mx", ((e.clientX - rect.left) / rect.width * 100) + "%");
+            card.style.setProperty("--my", ((e.clientY - rect.top) / rect.height * 100) + "%");
         });
-		
-    });// end window load function
-   
+    });
+
+    /* ---- 6. CONTACT FORM AJAX ---- */
+    const form = document.getElementById("contact-form");
+    const statusEl = document.getElementById("form-status");
+    const submitBtn = document.getElementById("submit-btn");
+
+    if (form && statusEl && submitBtn) {
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const btnText = submitBtn.querySelector(".submit-text");
+            if (btnText) btnText.textContent = "Sending...";
+            submitBtn.disabled = true;
+            statusEl.className = "form-status";
+            statusEl.textContent = "";
+
+            try {
+                const res = await fetch("/contact/send/", {
+                    method: "POST",
+                    body: new FormData(form)
+                });
+                const data = await res.json();
+                if (res.ok && data.status === "success") {
+                    statusEl.className = "form-status success";
+                    statusEl.textContent = "✓ Message sent! I'll get back to you soon.";
+                    form.reset();
+                } else {
+                    statusEl.className = "form-status error";
+                    statusEl.textContent = data.message || "Something went wrong. Please try again.";
+                }
+            } catch (err) {
+                statusEl.className = "form-status error";
+                statusEl.textContent = "Network error. Please check your connection.";
+            } finally {
+                submitBtn.disabled = false;
+                if (btnText) btnText.textContent = "Send Message";
+            }
+        });
+    }
+
 });

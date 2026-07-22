@@ -1,585 +1,376 @@
 {% load static %}
 <!DOCTYPE html>
-	<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-	<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-	<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-	<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & Backend Architecture | Portfolio</title>
+    <meta name="description" content="Backend & AI Engineer specializing in scalable infrastructure, neural networks, and modern web systems.">
+    <meta property="og:title" content="Backend & AI Architecture">
+    <meta property="og:description" content="I architect the digital nervous systems for modern web applications.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=20.0">
+</head>
+<body>
 
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>Ersin's world</title>
-		<meta name="description" content="Slider Revolution Example" />
-		<meta name="keywords" content="fullscreen image, grid layout, flexbox grid, transition" />
-		<meta name="author" content="ThemePunch" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<style>
-		   body{
-		   padding: 0px;
-		   margin: 0px;
-		   }
-		</style>
-		<!-- LOAD JQUERY LIBRARY -->
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
-		<!-- LOADING FONTS AND ICONS -->
-		<link href="http://fonts.googleapis.com/css?family=Raleway%3A300%2C100%2C600" rel="stylesheet" property="stylesheet" type="text/css" media="all" />
-		<link rel="stylesheet" type="text/css" href="{% static 'revolution/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css' %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'revolution/fonts/font-awesome/css/font-awesome.css' %}">
-		<!-- REVOLUTION STYLE SHEETS -->
-		<link rel="stylesheet" type="text/css" href="{% static 'revolution/css/settings.css' %}">
-		<!-- REVOLUTION LAYERS STYLES -->
-		<link rel="stylesheet" type="text/css" href="{% static 'revolution/css/layers.css' %}">
-		<!-- REVOLUTION NAVIGATION STYLES -->
-		<link rel="stylesheet" type="text/css" href="{% static 'revolution/css/navigation.css' %}">
-		<!-- REVOLUTION JS FILES -->
-		<script type="text/javascript" src="{% static 'revolution/js/jquery.themepunch.tools.min.js' %}"></script>
-		<script type="text/javascript" src="{% static 'revolution/js/jquery.themepunch.revolution.min.js' %}"></script>
-		<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->	
-		<script type="text/javascript" src="{% static 'revolution/js/extensions/revolution.extension.actions.min.js' %}"></script>
-		<script type="text/javascript" src="{% static 'revolution/js/extensions/revolution.extension.carousel.min.js' %}"></script>
-		<script type="text/javascript" src="{% static 'revolution/js/extensions/revolution.extension.kenburn.min.js' %}"></script>
-		<script type="text/javascript" src="{% static 'revolution/js/extensions/revolution.extension.layeranimation.min.js' %}"></script>
-		<script type="text/javascript" src="{% static 'revolution/js/extensions/revolution.extension.migration.min.js' %}"></script>
-		<script type="text/javascript" src="{% static 'revolution/js/extensions/revolution.extension.navigation.min.js' %}"></script>
-		<script type="text/javascript" src="{% static 'revolution/js/extensions/revolution.extension.parallax.min.js' %}"></script>
-		<script type="text/javascript" src="{% static 'revolution/js/extensions/revolution.extension.slideanims.min.js' %}"></script>
-		<script type="text/javascript" src="{% static 'revolution/js/extensions/revolution.extension.video.min.js' %}"></script>
-	 </head>
-	 <body>
-		<!-- SLIDER EXAMPLE -->
-		<section class="example">
-		   <article class="content">
-			  <div id="rev_slider_1064_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="photography4export" data-source="gallery" style="background-color:transparent;padding:0px;">
-				 <!-- START REVOLUTION SLIDER 5.4.1 fullscreen mode -->
-				 <div id="rev_slider_1064_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.4.1">
-					<ul>
-					   <!-- SLIDE  -->
-					   <li data-index="rs-2989" data-transition="slideoververtical" data-slotamount="7" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="1500"  data-thumb="images/photography1-100x50.jpg"  data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off"  data-title="Intro" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
-						  <!-- MAIN IMAGE -->
-						  <img src="{{setting.image.url}}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
-						  <!-- LAYERS -->
-						  <!-- LAYER NR. 1 -->
-						  <div class="tp-caption Photography-Subline   tp-resizeme" 
-							 id="slide-2989-layer-4" 
-							 data-x="['center','center','center','center']" data-hoffset="['162','42','0','0']" 
-							 data-y="['middle','middle','middle','middle']" data-voffset="['-157','-157','-157','-80']" 
-							 data-fontsize="['20','20','20','17']"
-							 data-lineheight="['30','30','30','26']"
-							 data-width="none"
-							 data-height="none"
-							 data-whitespace="nowrap"
-							 data-type="text" 
-							 data-responsive_offset="on" 
-							 data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
-							 data-textAlign="['left','left','left','left']"
-							 data-paddingtop="[0,0,0,0]"
-							 data-paddingright="[0,0,0,0]"
-							 data-paddingbottom="[0,0,0,0]"
-							 data-paddingleft="[0,0,0,0]"
-							 style="z-index: 5; white-space: nowrap;text-transform:left;color:red">HI, MY NAME IS <span style="color:white;">ERSIN</span> AND I LOVE </div>
-						  <!-- LAYER NR. 2 -->
-						  <div class="tp-caption Photography-Display   tp-resizeme" 
-							 id="slide-2989-layer-1" 
-							 data-x="['center','center','center','center']" data-hoffset="['153','33','0','0']" 
-							 data-y="['middle','middle','middle','middle']" data-voffset="['-40','-40','-40','-20']" 
-							 data-fontsize="['80','80','80','40']"
-							 data-lineheight="['70','70','70','50']"
-							 data-width="none"
-							 data-height="none"
-							 data-whitespace="nowrap"
-							 data-type="text" 
-							 data-responsive_offset="on" 
-							 data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":750,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
-							 data-textAlign="['left','left','left','left']"
-							 data-paddingtop="[0,0,0,0]"
-							 data-paddingright="[0,0,0,0]"
-							 data-paddingbottom="[0,0,0,0]"
-							 data-paddingleft="[0,0,0,0]"
-							 style="z-index: 6; white-space: nowrap;color:blue;">web development </div>
-						  <!-- LAYER NR. 3 -->
-						  <div class="tp-caption Photography-Display   tp-resizeme" 
-							 id="slide-2989-layer-3" 
-							 data-x="['center','center','center','center']" data-hoffset="['280','160','0','0']" 
-							 data-y="['middle','middle','middle','middle']" data-voffset="['40','40','40','20']" 
-							 data-fontsize="['80','80','80','40']"
-							 data-lineheight="['70','70','70','50']"
-							 data-width="none"
-							 data-height="none"
-							 data-whitespace="nowrap"
-							 data-type="text" 
-							 data-responsive_offset="on" 
-							 data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1000,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
-							 data-textAlign="['left','left','left','left']"
-							 data-paddingtop="[0,0,0,0]"
-							 data-paddingright="[0,0,0,0]"
-							 data-paddingbottom="[0,0,0,0]"
-							 data-paddingleft="[0,0,0,0]"
-							 style="z-index: 7; white-space: nowrap; color: rgb(255, 127, 0);text-transform:left;"></div>
-						  <!-- LAYER NR. 4 -->
-						  <div class="tp-caption rev-btn rev-maxround rev-bordered  " 
-							 id="slide-2989-layer-6" 
-							 data-x="['center','center','center','center']" data-hoffset="['55','-66','0','0']" 
-							 data-y="['middle','middle','bottom','bottom']" data-voffset="['181','181','100','100']" 
-							 data-width="none"
-							 data-height="none"
-							 data-whitespace="nowrap"
-							 data-type="text" 
-							 data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-2997","delay":""},{"event":"click","action":"simulateclick","layer":"slider-1064-layer-16","delay":"0"}]'
-							 data-basealign="slide" 
-							 data-responsive_offset="on" 
-							 data-responsive="off"
-							 data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","speed":2000,"to":"o:1;","delay":1250,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[175%];","mask":"x:inherit;y:inherit;","ease":"Power2.easeInOut"},{"frame":"hover","speed":"300","ease":"Power3.easeOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);bw:1px 1px 1px 1px;"}]'
-							 data-textAlign="['left','left','left','left']"
-							 data-paddingtop="[13,13,13,13]"
-							 data-paddingright="[35,35,35,35]"
-							 data-paddingbottom="[13,13,13,13]"
-							 data-paddingleft="[35,35,35,35]"
-							 style="z-index: 8; white-space: nowrap; font-size: 15px; line-height: 15px; font-weight: 600; color: rgb(10, 10, 10);font-family:Raleway;text-transform:left;background-color:rgba(0, 0, 0, 0);border-color:rgba(255, 255, 255, 0.25);border-style:solid;border-width:1px;border-radius:30px 30px 30px 30px;letter-spacing:1px;">ABOUT ME </div>
-					   </li>
-					   
-					   <!-- SLIDE  -->
-					   <li data-index="rs-2997" data-transition="slideoververtical" data-slotamount="7" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="1500"  data-thumb="images/photography9-100x50.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="About" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="&lt;p&gt;&lt;br data-mce-bogus=\&quot;1\&quot;&gt;&lt;/p&gt;
-						  ">
-						  <!-- MAIN IMAGE -->
-						  <img src="{{setting.Image1.url}}"  alt="" style = "margin-right: 1000px;"  data-bgposition="left center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
-						  <!-- LAYERS -->
-						  <!-- LAYER NR. 39 -->
-						  <div class="tp-caption Photography-Display   tp-resizeme" 
-							 id="slide-2997-layer-1" 
-							 data-x="['left','left','center','center']" data-hoffset="['80','80','0','0']" 
-							 data-y="['top','top','top','top']" data-voffset="['170','130','200','140']" 
-							 data-fontsize="['60','60','60','40']"
-							 data-width="none"
-							 data-height="none"
-							 data-whitespace="nowrap"
-							 data-type="text" 
-							 data-basealign="slide" 
-							 data-responsive_offset="on" 
-							 data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
-							 data-textAlign="['left','left','left','left']"
-							 data-paddingtop="[0,0,0,0]"
-							 data-paddingright="[0,0,0,0]"
-							 data-paddingbottom="[0,0,0,0]"
-							 data-paddingleft="[0,0,0,0]"
-							 style="z-index: 43; white-space: nowrap; font-size: 60px; line-height: 50px; color:white;text-transform:left;">WHAT I DO </div>
-						  <!-- LAYER NR. 40 -->
-						  <div class="tp-caption Photography-Subline   tp-resizeme" 
-							 id="slide-2997-layer-4" 
-							 data-x="['left','left','center','center']" data-hoffset="['80','80','0','0']" 
-							 data-y="['top','top','top','top']" data-voffset="['229','189','259','192']" 
-							 data-fontsize="['20','20','20','17']"
-							 data-lineheight="['30','30','30','26']"
-							 data-width="['204','201','none','none']"
-							 data-height="none"
-							 data-whitespace="['normal','normal','nowrap','nowrap']"
-							 data-type="text" 
-							 data-basealign="slide" 
-							 data-responsive_offset="on" 
-							 data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":750,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
-							 data-textAlign="['left','left','left','left']"
-							 data-paddingtop="[0,0,0,0]"
-							 data-paddingright="[0,0,0,0]"
-							 data-paddingbottom="[0,0,0,0]"
-							 data-paddingleft="[0,0,0,0]"
-							 style="z-index: 44; min-width: 204px; max-width: 204px; white-space: normal;text-transform:left;">LANGUAGE
-						  </div>
-						  <!-- LAYER NR. 41 -->
-						  <div class="tp-caption Photography-Subline   tp-resizeme" 
-							 id="slide-2997-layer-8" 
-							 data-x="['left','left','center','center']" data-hoffset="['321','290','0','0']" 
-							 data-y="['top','top','top','top']" data-voffset="['229','189','354','255']" 
-							 data-fontsize="['20','20','20','17']"
-							 data-lineheight="['30','30','30','26']"
-							 data-width="['669','582','500','384']"
-							 data-height="none"
-							 data-whitespace="normal"
-							 data-type="text" 
-							 data-basealign="slide" 
-							 data-responsive_offset="on" 
-							 data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":750,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
-							 data-textAlign="['left','left','left','left']"
-							 data-paddingtop="[0,0,0,0]"
-							 data-paddingright="[0,0,0,0]"
-							 data-paddingbottom="[0,0,0,0]"
-							 data-paddingleft="[0,0,0,0]"
-							 style="z-index: 45; min-width: 669px; max-width: 669px; white-space: normal;text-transform:left;">PYTHON
-							
-						  </div>
-						  <!-- LAYER NR. 42 -->
-						  <div class="tp-caption Photography-Textblock   tp-resizeme" 
-							 id="slide-2997-layer-7" 
-							 data-x="['left','left','center','center']" data-hoffset="['80','80','0','6']" 
-							 data-y="['top','top','top','top']" data-voffset="['340','290','478','361']" 
-							 data-lineheight="['30','30','30','26']"
-							 data-width="['490','492','500','400']"
-							 data-height="none"
-							 data-whitespace="normal"
-							 data-type="text" 
-							 data-basealign="slide" 
-							 data-responsive_offset="on" 
-							 data-frames='[{"from":"x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"x:[-100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
-							 data-textAlign="['left','left','left','left']"
-							 data-paddingtop="[0,0,0,0]"
-							 data-paddingright="[0,0,0,0]"
-							 data-paddingbottom="[0,0,0,0]"
-							 data-paddingleft="[0,0,0,0]"
-							 style="z-index: 46; min-width: 490px; max-width: 490px; white-space: normal;text-transform:left;color:#fff">{{setting.about_page}}
-						  </div>
-						  <!-- LAYER NR. 43 -->
-						  <div class="tp-caption Photography-Button rev-btn " 
-							 id="slide-2997-layer-6" 
-							 data-x="['left','left','center','center']" data-hoffset="['80','80','0','0']" 
-							 data-y="['top','top','bottom','bottom']" data-voffset="['600','530','100','100']" 
-							 data-width="none"
-							 data-height="none"
-							 data-whitespace="nowrap"
-							 data-type="button" 
-							 data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-2998","delay":""}]'
-							 data-basealign="slide" 
-							 data-responsive_offset="on" 
-							 data-responsive="off"
-							 data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","speed":2000,"to":"o:1;","delay":1250,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[175%];","mask":"x:inherit;y:inherit;","ease":"Power2.easeInOut"},{"frame":"hover","speed":"300","ease":"Power3.easeOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);bw:1px 1px 1px 1px;"}]'
-							 data-textAlign="['left','left','left','left']"
-							 data-paddingtop="[13,13,13,13]"
-							 data-paddingright="[35,35,35,35]"
-							 data-paddingbottom="[13,13,13,13]"
-							 data-paddingleft="[35,35,35,35]"
-							 style="z-index: 47; white-space: nowrap;text-transform:left;letter-spacing:1px;color:rgb(255, 254, 254)">HIRE ME </div>
-					   </li>
-					   <!-- SLIDE  -->
-					   <li data-index="rs-2998" data-transition="slideoververtical" data-slotamount="7" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="1500"  data-thumb="images/photography_contact-100x50.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="Contact" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="&lt;p&gt;&lt;br data-mce-bogus=\&quot;1\&quot;&gt;&lt;/p&gt;
-						  ">
-						  <!-- MAIN IMAGE -->
-						  <img src="{{contacts.photo.url}}"  alt=""  data-bgposition="center center" data-kenburns="on" data-duration="30000" data-ease="Linear.easeNone" data-scalestart="120" data-scaleend="100" data-rotatestart="5" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" class="rev-slidebg" data-no-retina>
-						  <!-- LAYERS -->
-						  <!-- LAYER NR. 44 -->
-						  <div class="tp-caption tp-shape tp-shapewrapper   tp-resizeme" 
-							 id="slide-2998-layer-9" 
-							 data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
-							 data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']" 
-							 data-width="full"
-							 data-height="full"
-							 data-whitespace="nowrap"
-							 data-type="shape" 
-							 data-basealign="slide" 
-							 data-responsive_offset="on" 
-							 data-frames='[{"from":"z:0;rX:0deg;rY:0;rZ:0;sX:1.5;sY:1.5;skX:0;skY:0;opacity:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1500,"ease":"Power3.easeOut"},{"delay":"wait","speed":1000,"to":"auto:auto;","ease":"nothing"}]'
-							 data-textAlign="['left','left','left','left']"
-							 data-paddingtop="[0,0,0,0]"
-							 data-paddingright="[0,0,0,0]"
-							 data-paddingbottom="[0,0,0,0]"
-							 data-paddingleft="[0,0,0,0]"
-							 style="z-index: 48;text-transform:left;background-color:rgba(0, 0, 0, 0.5);border-color:rgba(0, 0, 0, 1.00);border-width:0px;"> </div>
-						  <!-- LAYER NR. 45 -->
-						  <div class="tp-caption Photography-Display   tp-resizeme" 
-							 id="slide-2998-layer-1" 
-							 data-x="['left','left','left','left']" data-hoffset="['400','300','130','50']" 
-							 data-y="['top','top','top','top']" data-voffset="['240','170','200','150']" 
-							 data-fontsize="['60','60','60','40']"
-							 data-width="none"
-							 data-height="none"
-							 data-whitespace="nowrap"
-							 data-type="text" 
-							 data-responsive_offset="on" 
-							 data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
-							 data-textAlign="['left','left','left','left']"
-							 data-paddingtop="[0,0,0,0]"
-							 data-paddingright="[0,0,0,0]"
-							 data-paddingbottom="[0,0,0,0]"
-							 data-paddingleft="[0,0,0,0]"
-							 style="z-index: 49; white-space: nowrap; font-size: 60px; line-height: 50px; color: rgba(255, 255, 255, 1.00);text-transform:left;">GET IN TOUCH </div>
-						  <!-- LAYER NR. 46 -->
-						  <div class="tp-caption Photography-Display   tp-resizeme" 
-							 id="slide-2998-layer-11" 
-							 data-x="['left','left','left','left']" data-hoffset="['400','300','130','50']" 
-							 data-y="['top','top','top','top']" data-voffset="['296','227','256','199']" 
-							 data-fontsize="['60','60','60','40']"
-							 data-width="none"
-							 data-height="none"
-							 data-whitespace="nowrap"
-							 data-type="text" 
-							 data-responsive_offset="on" 
-							 data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:[100%];","speed":2000,"to":"o:1;","delay":750,"ease":"Power2.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;","ease":"Power2.easeInOut"}]'
-							 data-textAlign="['left','left','left','left']"
-							 data-paddingtop="[10,10,10,10]"
-							 data-paddingright="[10,10,10,10]"
-							 data-paddingbottom="[10,10,10,10]"
-							 data-paddingleft="[10,10,10,10]"
-							 style="z-index: 50; white-space: nowrap; font-size: 40px; line-height: 50px; color: rgba(255, 255, 255, 1.00);text-transform:left;background-color:rgba(0, 0, 0, 1.00);">AND GET REAL </div>
-						  <!-- LAYER NR. 47 -->
-						  <div class="tp-caption Photography-Textblock   tp-resizeme" 
-							 id="slide-2998-layer-7" 
-							 data-x="['left','left','left','left']" data-hoffset="['400','300','130','50']" 
-							 data-y="['top','top','top','top']" data-voffset="['408','344','368','454']" 
-							 data-lineheight="['30','30','30','26']"
-							 data-width="400"
-							 data-height="none"
-							 data-whitespace="normal"
-							 data-type="text" 
-							 data-responsive_offset="on" 
-							 data-frames='[{"from":"x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"x:[100%];","mask":"x:inherit;y:inherit;","ease":"Power3.easeInOut"}]'
-							 data-textAlign="['left','left','left','left']"
-							 data-paddingtop="[0,0,0,0]"
-							 data-paddingright="[0,0,0,0]"
-							 data-paddingbottom="[0,0,0,0]"
-							 data-paddingleft="[0,0,0,0]"
-							 style="z-index: 51; min-width: 400px; max-width: 400px; white-space: normal; color: rgba(255, 255, 255, 1.00);text-transform:left;">The meeting of two personalities is like the contact of two chemical substances: if there is any reaction, both are transformed. </div>
-						  <!-- LAYER NR. 48 -->
-						  <div class="tp-caption Photography-Subline   tp-resizeme" 
-							 id="slide-2998-layer-4" 
-							 data-x="['left','left','left','left']" data-hoffset="['400','300','130','50']" 
-							 data-y="['top','top','top','top']" data-voffset="['551','490','521','313']" 
-							 data-lineheight="['30','30','30','26']"
-							 data-width="['400','400','400','none']"
-							 data-height="none"
-							 data-whitespace="['normal','normal','nowrap','nowrap']"
-							 data-type="text" 
-							 data-responsive_offset="on" 
-							 data-frames='[{"from":"x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":1250,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"x:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power3.easeInOut"}]'
-							 data-textAlign="['left','left','left','left']"
-							 data-paddingtop="[0,0,0,0]"
-							 data-paddingright="[0,0,0,0]"
-							 data-paddingbottom="[0,0,0,0]"
-							 data-paddingleft="[0,0,0,0]"
-							 style="z-index: 52; min-width: 400px; max-width: 400px; white-space: normal; font-size: 17px; color: rgba(255, 255, 255, 1.00);text-transform:left;">
-							 <a href="{{contacts.instagramm}}" style="color: white; text-decoration: none;"><i class="fa-icon-map-marker" style="color:#255, 255, 255;width:25px;"></i>Instagram<br/></a>
-							 <a href="tel: {{contacts.phone}}" style="color: white;text-decoration: none;"><i class="fa-icon-phone" style="color:#fff;width:25px"></i>{{contacts.phone}}<br/></a>
-							 <a href="mailto:{{contacts.email}}"style="color: white; text-decoration: none;homesize: 30px"><i class="fa-icon-envelope-o" style="color:#fff;width:25px;"></i> uraiymoversin@gmail.com<br/></a>
-							 <i class="fa-icon-clock-o"  style="color:#fff;width:25px;"></i>{{contacts.street}}
-						  </div>
-					   </li> 
-					</ul>
-					<div style class="tp-static-layers">
-					   <!-- LAYER NR. 49 -->
-					   <div class="tp-caption   tp-static-layer" 
-						  id="slider-1064-layer-2" 
-						  data-x="['left','left','left','left']" data-hoffset="['30','30','30','30']" 
-						  data-y="['top','top','top','top']" data-voffset="['30','30','30','30']" 
-						  data-width="none"
-						  data-height="none"
-						  data-whitespace="nowrap"
-						  data-type="image" 
-						  data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-2989","delay":""}]'
-						  data-basealign="slide" 
-						  data-responsive_offset="off" 
-						  data-responsive="off"
-						  data-startslide="0" 
-						  data-endslide="9" 
-						  data-frames='[{"from":"opacity:0;","speed":1500,"to":"o:1;","delay":500,"ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"to":"auto:auto;","ease":"nothing"}]'
-						  data-textAlign="['left','left','left','left']"
-						  data-paddingtop="[0,0,0,0]"
-						  data-paddingright="[0,0,0,0]"
-						  data-paddingbottom="[0,0,0,0]"
-						  data-paddingleft="[0,0,0,0]"
-						  style="z-index: 53;text-transform:left;border-width:0px;cursor:pointer;"><img  src="{% static 'images/pythonlast.png' %}" alt="" data-ww="['64px','64px','64px','64px']" data-hh="['64px','64px','64px','64px']" width="64" height="48" data-no-retina> </div>
-					   <!-- LAYER NR. 50 -->
-					   <div class="tp-caption rev-burger revb-whitenoborder  tp-static-layer" 
-						  id="slider-1064-layer-16" 
-						  data-x="['right','right','right','right']" data-hoffset="['14','14','14','14']" 
-						  data-y="['top','top','top','top']" data-voffset="['10','10','10','10']" 
-						  data-width="60"
-						  data-height="60"
-						  data-whitespace="nowrap"
-						  data-type="button" 
-						  data-actions='[{"event":"click","action":"toggleclass","layer":"slider-1064-layer-16","delay":"0","classname":"open"},{"event":"click","action":"togglelayer","layerstatus":"hidden","layer":"slider-1064-layer-5","delay":""},{"event":"click","action":"togglelayer","layerstatus":"hidden","layer":"slider-1064-layer-6","delay":""},{"event":"click","action":"togglelayer","layerstatus":"hidden","layer":"slider-1064-layer-7","delay":""},{"event":"click","action":"togglelayer","layerstatus":"hidden","layer":"slider-1064-layer-8","delay":""}]'
-						  data-basealign="slide" 
-						  data-responsive_offset="off" 
-						  data-responsive="off"
-						  data-startslide="0" 
-						  data-endslide="9" 
-						  data-frames='[{"from":"opacity:0;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"ease":"nothing"}]'
-						  data-textAlign="['left','left','left','left']"
-						  data-paddingtop="[22,22,22,22]"
-						  data-paddingright="[0,0,0,0]"
-						  data-paddingbottom="[0,0,0,0]"
-						  data-paddingleft="[14,14,14,14]"
-						  style="z-index: 54; min-width: 60px; max-width: 60px; max-width: 60px; max-width: 60px; white-space: nowrap; font-size: px; line-height: px; font-weight: 100;text-transform:left;border-color:rgba(68, 68, 68, 1.00);border-width:0px;border-radius:50% 50% 50% 50%;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">
-						  <span></span>
-						  <span></span>
-						  <span></span>
-					   </div>
-					   <!-- LAYER NR. 51 -->
-					   <a class="tp-caption   tp-static-layer" 
-						  href="#" target="_blank"			 id="slider-1064-layer-3" 
-						  data-x="['left','left','left','left']" data-hoffset="['67','67','67','67']" 
-						  data-y="['bottom','bottom','bottom','bottom']" data-voffset="['30','30','30','30']" 
-						  data-width="none"
-						  data-height="none"
-						  data-whitespace="nowrap"
-						  data-visibility="['on','on','off','off']"
-						  data-type="text" 
-						  data-actions='[{"event":"click","action":"simplelink","target":"new","url":"","delay":""}]'
-						  data-basealign="slide" 
-						  data-responsive_offset="off" 
-						  data-responsive="off"
-						  data-startslide="0" 
-						  data-endslide="9" 
-						  data-frames='[{"from":"opacity:0;","speed":1500,"to":"o:1;","delay":500,"ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"to":"auto:auto;","ease":"nothing"},{"frame":"hover","speed":"300","ease":"Power3.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bg:rgba(59, 89, 152, 1.00);"}]'
-						  data-textAlign="['left','left','left','left']"
-						  data-paddingtop="[6,6,6,6]"
-						  data-paddingright="[10,10,10,10]"
-						  data-paddingbottom="[4,4,4,4]"
-						  data-paddingleft="[11,11,11,11]"
-						  style="z-index: 55; white-space: nowrap; font-size: 20px; line-height: 22px; font-weight: 400; color: rgba(255, 255, 255, 1.00);text-transform:left;background-color:rgba(0, 0, 0, 1.00);border-width:0px;border-radius:30px 30px 30px 30px;cursor:pointer;"><i class="fa-icon-facebook"></i> </a>
-					   <!-- LAYER NR. 52 -->
-					   <a class="tp-caption   tp-static-layer" 
-						  href="#" target="_blank"			 id="slider-1064-layer-4" 
-						  data-x="['left','left','left','left']" data-hoffset="['30','30','30','30']" 
-						  data-y="['bottom','bottom','bottom','bottom']" data-voffset="['30','30','30','30']" 
-						  data-width="none"
-						  data-height="none"
-						  data-whitespace="nowrap"
-						  data-visibility="['on','on','off','off']"
-						  data-type="text" 
-						  data-actions='[{"event":"click","action":"simplelink","target":"new","url":"","delay":""}]'
-						  data-basealign="slide" 
-						  data-responsive_offset="off" 
-						  data-responsive="off"
-						  data-startslide="0" 
-						  data-endslide="9" 
-						  data-frames='[{"from":"opacity:0;","speed":1500,"to":"o:1;","delay":500,"ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"to":"auto:auto;","ease":"nothing"},{"frame":"hover","speed":"300","ease":"Power3.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bg:rgba(85, 172, 238, 1.00);"}]'
-						  data-textAlign="['left','left','left','left']"
-						  data-paddingtop="[6,6,6,6]"
-						  data-paddingright="[7,7,7,7]"
-						  data-paddingbottom="[4,4,4,4]"
-						  data-paddingleft="[9,9,9,9]"
-						  style="z-index: 56; white-space: nowrap; font-size: 17px; line-height: 22px; font-weight: 400; color: rgba(255, 255, 255, 1.00);text-transform:left;background-color:rgba(0, 0, 0, 1.00);border-width:0px;border-radius:30px 30px 30px 30px;cursor:pointer;"><i class="fa-icon-twitter"></i> </a>
-					   <!-- LAYER NR. 53 -->
-					   <div class="tp-caption Photography-Menuitem   tp-static-layer" 
-						  id="slider-1064-layer-5" 
-						  data-x="['right','right','right','right']" data-hoffset="['30','30','30','30']" 
-						  data-y="['top','top','top','top']" data-voffset="['80','80','80','80']" 
-						  data-width="none"
-						  data-height="none"
-						  data-whitespace="nowrap"
-						  data-type="text" 
-						  data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-2989","delay":""},{"event":"click","action":"simulateclick","layer":"slider-1064-layer-16","delay":"0"}]'
-						  data-basealign="slide" 
-						  data-responsive_offset="off" 
-						  data-responsive="off"
-						  data-startslide="0" 
-						  data-endslide="9" 
-						  data-frames='[{"from":"x:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":700,"to":"o:1;","delay":"bytrigger","ease":"Power3.easeInOut"},{"delay":"bytrigger","speed":500,"to":"x:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"200","ease":"Linear.easeNone","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bg:rgba(255, 127, 0, 0.9);"}]'
-						  data-textAlign="['left','left','left','left']"
-						  data-paddingtop="[3,3,3,3]"
-						  data-paddingright="[5,5,5,5]"
-						  data-paddingbottom="[3,3,3,3]"
-						  data-paddingleft="[8,8,8,8]"
-						  data-lasttriggerstate="keep"
-						  style="z-index: 57; white-space: nowrap;text-transform:left;cursor:pointer;">INTRO </div>
-					   <div class="tp-caption Photography-Menuitem   tp-static-layer" 
-						  id="slider-1064-layer-7" 
-						  data-x="['right','right','right','right']" data-hoffset="['30','30','30','30']" 
-						  data-y="['top','top','top','top']" data-voffset="['110','110','110','110']" 
-						  data-width="none"
-						  data-height="none"
-						  data-whitespace="nowrap"
-						  data-type="text" 
-						  data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-2997","delay":""},{"event":"click","action":"simulateclick","layer":"slider-1064-layer-16","delay":"0"}]'
-						  data-basealign="slide" 
-						  data-responsive_offset="off" 
-						  data-responsive="off"
-						  data-startslide="0" 
-						  data-endslide="9" 
-						  data-frames='[{"from":"x:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":700,"to":"o:1;","delay":"bytrigger","ease":"Power3.easeInOut"},{"delay":"bytrigger","speed":500,"to":"x:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"200","ease":"Linear.easeNone","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bg:rgba(255, 127, 0, 0.9);"}]'
-						  data-textAlign="['left','left','left','left']"
-						  data-paddingtop="[3,3,3,3]"
-						  data-paddingright="[5,5,5,5]"
-						  data-paddingbottom="[3,3,3,3]"
-						  data-paddingleft="[8,8,8,8]"
-						  data-lasttriggerstate="keep"
-						  style="z-index: 59; white-space: nowrap;text-transform:left;cursor:pointer;">ABOUT ME </div>
-					   <!-- LAYER NR. 56 -->
-					   <div class="tp-caption Photography-Menuitem   tp-static-layer" 
-						  id="slider-1064-layer-8" 
-						  data-x="['right','right','right','right']" data-hoffset="['30','30','30','30']" 
-						  data-y="['top','top','top','top']" data-voffset="['140','140','140','140']" 
-						  data-width="none"
-						  data-height="none"
-						  data-whitespace="nowrap"
-						  data-type="text" 
-						  data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-2998","delay":""},{"event":"click","action":"simulateclick","layer":"slider-1064-layer-16","delay":"0"}]'
-						  data-basealign="slide" 
-						  data-responsive_offset="off" 
-						  data-responsive="off"
-						  data-startslide="0" 
-						  data-endslide="9" 
-						  data-frames='[{"from":"x:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":700,"to":"o:1;","delay":"bytrigger","ease":"Power3.easeInOut"},{"delay":"bytrigger","speed":500,"to":"x:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"200","ease":"Linear.easeNone","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bg:rgba(255, 127, 0, 0.9);"}]'
-						  data-textAlign="['left','left','left','left']"
-						  data-paddingtop="[3,3,3,3]"
-						  data-paddingright="[5,5,5,5]"
-						  data-paddingbottom="[3,3,3,3]"
-						  data-paddingleft="[8,8,8,8]"
-						  data-lasttriggerstate="keep"
-						  style="z-index: 60; white-space: nowrap;text-transform:left;cursor:pointer;">CONTACT </div>
-					   <!-- LAYER NR. 57 -->
-					   
-					</div>
-					<div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
-				 </div>
-			  </div>
-			  <!-- END REVOLUTION SLIDER -->
-			  <script type="text/javascript">
-				 var tpj=jQuery;
-				 
-				 var revapi1064;
-				 tpj(document).ready(function() {
-				 if(tpj("#rev_slider_1064_1").revolution == undefined){
-				 revslider_showDoubleJqueryError("#rev_slider_1064_1");
-				 }else{
-				 revapi1064 = tpj("#rev_slider_1064_1").show().revolution({
-				 sliderType:"standard",
-				 jsFileLocation:"revolution/js/",
-				 sliderLayout:"fullscreen",
-				 dottedOverlay:"none",
-				 delay:9000,
-				 navigation: {
-					 keyboardNavigation:"off",
-					 keyboard_direction: "horizontal",
-					 mouseScrollNavigation:"on",
-						 mouseScrollReverse:"default",
-					 onHoverStop:"off",
-					 touch:{
-						 touchenabled:"on",
-						 swipe_threshold: 75,
-						 swipe_min_touches: 1,
-						 swipe_direction: "vertical",
-						 drag_block_vertical: false
-					 }
-				 },
-				 responsiveLevels:[1240,1024,778,480],
-				 visibilityLevels:[1240,1024,778,480],
-				 gridwidth:[1240,1024,778,480],
-				 gridheight:[868,768,960,720],
-				 lazyType:"none",
-				 shadow:0,
-				 spinner:"off",
-				 stopLoop:"on",
-				 stopAfterLoops:0,
-				 stopAtSlide:1,
-				 shuffle:"off",
-				 autoHeight:"off",
-				 fullScreenAutoWidth:"off",
-				 fullScreenAlignForce:"off",
-				 fullScreenOffsetContainer: ".header",
-				 fullScreenOffset: "",
-				 disableProgressBar:"on",
-				 hideThumbsOnMobile:"off",
-				 hideSliderAtLimit:0,
-				 hideCaptionAtLimit:0,
-				 hideAllCaptionAtLilmit:0,
-				 debugMode:false,
-				 fallbacks: {
-					 simplifyAll:"off",
-					 nextSlideOnWindowFocus:"off",
-					 disableFocusListener:false,
-				 }
-				 });
-				 }
-				 });	/*ready*/
-			  </script>
-		   </article>
-		</section>
-		<script type="text/javascript" src="{% static 'assets/warning.js' %}"></script>
-	 </body>
-	 </html>
+    <!-- Cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+
+    <!-- Background -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <div class="nav-logo">
+                <span class="logo-dot"></span>
+                <span class="logo-text">BACKEND<span class="logo-accent">.AI</span></span>
+            </div>
+            <div class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <a href="mailto:{{ contacts.email|default:'contact@engineer.ai' }}" class="nav-cta">
+                <span>Hire Me</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="about">
+            <div class="hero-inner">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    <span>Available for work</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="title-line">I Build</span>
+                    <span class="title-line gradient-text">Intelligent</span>
+                    <span class="title-line">Systems.</span>
+                </h1>
+                <p class="hero-desc">
+                    {{ setting.about_page|default:"Backend & AI Engineer crafting scalable infrastructure, neural pipelines, and high-performance web APIs that power the next generation of digital products." }}
+                </p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn-primary">
+                        View Projects
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <a href="#contact" class="btn-ghost">Get in Touch</a>
+                </div>
+
+                <!-- Stats Row -->
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <span class="stat-num">50+</span>
+                        <span class="stat-label">Projects Shipped</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num">5+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num">99%</span>
+                        <span class="stat-label">Uptime SLA</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating Tech Orb -->
+            <div class="hero-orb">
+                <div class="orb-ring orb-ring-1"></div>
+                <div class="orb-ring orb-ring-2"></div>
+                <div class="orb-ring orb-ring-3"></div>
+                <div class="orb-core">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24 4L44 36H4L24 4Z" stroke="#00F0FF" stroke-width="1.5" fill="none" opacity="0.8"/>
+                        <circle cx="24" cy="24" r="8" stroke="#A855F7" stroke-width="1.5" fill="none" opacity="0.8"/>
+                        <path d="M10 24H14M34 24H38M24 10V14M24 34V38" stroke="#00F0FF" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack Marquee -->
+        <div class="marquee-section">
+            <div class="marquee-track">
+                <div class="marquee-items">
+                    <span class="marquee-item">Python</span>
+                    <span class="marquee-sep">✦</span>
+                    <span class="marquee-item">Django</span>
+                    <span class="marquee-sep">✦</span>
+                    <span class="marquee-item">Neural Networks</span>
+                    <span class="marquee-sep">✦</span>
+                    <span class="marquee-item">PostgreSQL</span>
+                    <span class="marquee-sep">✦</span>
+                    <span class="marquee-item">Docker</span>
+                    <span class="marquee-sep">✦</span>
+                    <span class="marquee-item">REST APIs</span>
+                    <span class="marquee-sep">✦</span>
+                    <span class="marquee-item">Data Engineering</span>
+                    <span class="marquee-sep">✦</span>
+                    <span class="marquee-item">PyTorch</span>
+                    <span class="marquee-sep">✦</span>
+                    <span class="marquee-item">Redis</span>
+                    <span class="marquee-sep">✦</span>
+                    <span class="marquee-item">Kubernetes</span>
+                    <span class="marquee-sep">✦</span>
+                    <!-- Duplicate for seamless loop -->
+                    <span class="marquee-item">Python</span>
+                    <span class="marquee-sep">✦</span>
+                    <span class="marquee-item">Django</span>
+                    <span class="marquee-sep">✦</span>
+                    <span class="marquee-item">Neural Networks</span>
+                    <span class="marquee-sep">✦</span>
+                    <span class="marquee-item">PostgreSQL</span>
+                    <span class="marquee-sep">✦</span>
+                    <span class="marquee-item">Docker</span>
+                    <span class="marquee-sep">✦</span>
+                    <span class="marquee-item">REST APIs</span>
+                    <span class="marquee-sep">✦</span>
+                    <span class="marquee-item">Data Engineering</span>
+                    <span class="marquee-sep">✦</span>
+                    <span class="marquee-item">PyTorch</span>
+                    <span class="marquee-sep">✦</span>
+                    <span class="marquee-item">Redis</span>
+                    <span class="marquee-sep">✦</span>
+                    <span class="marquee-item">Kubernetes</span>
+                    <span class="marquee-sep">✦</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Section -->
+        <section class="projects-section" id="projects">
+            <div class="section-inner">
+                <div class="section-header">
+                    <span class="section-tag">// DEPLOYED_SYSTEMS</span>
+                    <h2 class="section-title">Featured Work</h2>
+                    <p class="section-sub">Production-grade systems built for scale and reliability.</p>
+                </div>
+
+                <div class="projects-grid">
+                    {% if projects %}
+                        {% for project in projects %}
+                        <div class="project-card {% if forloop.first %}project-card--featured{% endif %}">
+                            <div class="card-top">
+                                <div class="card-icon">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="7" height="7" rx="1" stroke="#00F0FF" stroke-width="1.5"/><rect x="11" y="2" width="7" height="7" rx="1" stroke="#A855F7" stroke-width="1.5"/><rect x="2" y="11" width="7" height="7" rx="1" stroke="#A855F7" stroke-width="1.5"/><rect x="11" y="11" width="7" height="7" rx="1" stroke="#00F0FF" stroke-width="1.5"/></svg>
+                                </div>
+                                <div class="card-links">
+                                    {% if project.github_url %}
+                                    <a href="{{ project.github_url }}" target="_blank" class="card-link-btn" aria-label="GitHub">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                                    </a>
+                                    {% endif %}
+                                    {% if project.live_url %}
+                                    <a href="{{ project.live_url }}" target="_blank" class="card-link-btn" aria-label="Live Demo">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H7M13 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <h3 class="card-title">{{ project.title }}</h3>
+                            <p class="card-desc">{{ project.description }}</p>
+                            <div class="card-tags">
+                                {% for tag in project.tech_tags.split %}
+                                <span class="tag">{{ tag|cut:"," }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <!-- Sample project cards when DB is empty -->
+                        <div class="project-card project-card--featured">
+                            <div class="card-top">
+                                <div class="card-icon">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="7" height="7" rx="1" stroke="#00F0FF" stroke-width="1.5"/><rect x="11" y="2" width="7" height="7" rx="1" stroke="#A855F7" stroke-width="1.5"/><rect x="2" y="11" width="7" height="7" rx="1" stroke="#A855F7" stroke-width="1.5"/><rect x="11" y="11" width="7" height="7" rx="1" stroke="#00F0FF" stroke-width="1.5"/></svg>
+                                </div>
+                                <div class="card-links">
+                                    <span class="card-link-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H7M13 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                                </div>
+                            </div>
+                            <h3 class="card-title">AI Vector Retrieval Engine</h3>
+                            <p class="card-desc">High-throughput semantic search API processing millions of embeddings with sub-100ms response time using pgvector and custom re-ranking models.</p>
+                            <div class="card-tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">Django</span>
+                                <span class="tag">pgvector</span>
+                                <span class="tag">PyTorch</span>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div class="card-top">
+                                <div class="card-icon">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#A855F7" stroke-width="1.5"/><path d="M10 6v4l3 3" stroke="#00F0FF" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                </div>
+                            </div>
+                            <h3 class="card-title">Real-Time Data Pipeline</h3>
+                            <p class="card-desc">Event-driven streaming architecture ingesting 50K+ events/sec with Kafka and Faust stream processing.</p>
+                            <div class="card-tags">
+                                <span class="tag">Kafka</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">Redis</span>
+                                <span class="tag">Docker</span>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div class="card-top">
+                                <div class="card-icon">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 16l4-4 4 4 4-8" stroke="#00F0FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </div>
+                            </div>
+                            <h3 class="card-title">Neural Monitoring Platform</h3>
+                            <p class="card-desc">Full-stack ML model monitoring with drift detection, performance degradation alerts, and automated retraining triggers.</p>
+                            <div class="card-tags">
+                                <span class="tag">FastAPI</span>
+                                <span class="tag">PostgreSQL</span>
+                                <span class="tag">Grafana</span>
+                                <span class="tag">K8s</span>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills-section">
+            <div class="section-inner">
+                <div class="skills-layout">
+                    <div class="skills-left">
+                        <span class="section-tag">// SKILL_MATRIX</span>
+                        <h2 class="section-title">Technical<br>Arsenal</h2>
+                        <p class="section-sub">Full-stack mastery from database architecture to neural model deployment.</p>
+                    </div>
+                    <div class="skills-right">
+                        <div class="skill-group">
+                            <span class="skill-group-label">Backend</span>
+                            <div class="skill-bars">
+                                <div class="skill-bar"><span class="skill-name">Python / Django</span><div class="skill-track"><div class="skill-fill" style="--w: 95%"></div></div></div>
+                                <div class="skill-bar"><span class="skill-name">FastAPI / REST</span><div class="skill-track"><div class="skill-fill" style="--w: 90%"></div></div></div>
+                                <div class="skill-bar"><span class="skill-name">PostgreSQL / Redis</span><div class="skill-track"><div class="skill-fill" style="--w: 88%"></div></div></div>
+                            </div>
+                        </div>
+                        <div class="skill-group">
+                            <span class="skill-group-label">AI / ML</span>
+                            <div class="skill-bars">
+                                <div class="skill-bar"><span class="skill-name">PyTorch / TensorFlow</span><div class="skill-track"><div class="skill-fill" style="--w: 85%"></div></div></div>
+                                <div class="skill-bar"><span class="skill-name">Data Engineering</span><div class="skill-track"><div class="skill-fill" style="--w: 80%"></div></div></div>
+                                <div class="skill-bar"><span class="skill-name">MLOps / Deployment</span><div class="skill-track"><div class="skill-fill" style="--w: 82%"></div></div></div>
+                            </div>
+                        </div>
+                        <div class="skill-group">
+                            <span class="skill-group-label">DevOps</span>
+                            <div class="skill-bars">
+                                <div class="skill-bar"><span class="skill-name">Docker / Kubernetes</span><div class="skill-track"><div class="skill-fill" style="--w: 87%"></div></div></div>
+                                <div class="skill-bar"><span class="skill-name">CI/CD Pipelines</span><div class="skill-track"><div class="skill-fill" style="--w: 83%"></div></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact">
+            <div class="section-inner">
+                <div class="contact-layout">
+                    <div class="contact-left">
+                        <span class="section-tag">// OPEN_CHANNEL</span>
+                        <h2 class="section-title">Let's Build<br>Something<br><span class="gradient-text">Great.</span></h2>
+                        <div class="contact-info">
+                            {% if contacts.email %}
+                            <a href="mailto:{{ contacts.email }}" class="contact-item">
+                                <div class="contact-item-icon">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke="#00F0FF" stroke-width="1.3"/><path d="M2 6l7 5 7-5" stroke="#00F0FF" stroke-width="1.3"/></svg>
+                                </div>
+                                <div>
+                                    <span class="contact-item-label">Email</span>
+                                    <span class="contact-item-val">{{ contacts.email }}</span>
+                                </div>
+                            </a>
+                            {% endif %}
+                            {% if contacts.instagramm %}
+                            <a href="{{ contacts.instagramm }}" target="_blank" class="contact-item">
+                                <div class="contact-item-icon">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="14" height="14" rx="4" stroke="#A855F7" stroke-width="1.3"/><circle cx="9" cy="9" r="3.5" stroke="#A855F7" stroke-width="1.3"/><circle cx="13" cy="5" r="1" fill="#A855F7"/></svg>
+                                </div>
+                                <div>
+                                    <span class="contact-item-label">Instagram</span>
+                                    <span class="contact-item-val">@profile</span>
+                                </div>
+                            </a>
+                            {% endif %}
+                            {% if contacts.street %}
+                            <div class="contact-item">
+                                <div class="contact-item-icon">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2C6.24 2 4 4.24 4 7c0 4.25 5 9 5 9s5-4.75 5-9c0-2.76-2.24-5-5-5zm0 6.5A1.5 1.5 0 117 7a1.5 1.5 0 012 1.5z" stroke="#00F0FF" stroke-width="1.3"/></svg>
+                                </div>
+                                <div>
+                                    <span class="contact-item-label">Location</span>
+                                    <span class="contact-item-val">{{ contacts.street }}</span>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="contact-right">
+                        <div class="contact-form-card">
+                            <form id="contact-form" class="contact-form">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="form-name" class="form-label">Full Name</label>
+                                    <input type="text" id="form-name" name="name" placeholder="John Doe" required class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="form-email" class="form-label">Email Address</label>
+                                    <input type="email" id="form-email" name="email" placeholder="john@company.com" required class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="form-message" class="form-label">Message</label>
+                                    <textarea id="form-message" name="message" rows="4" placeholder="Tell me about your project..." required class="form-input form-textarea"></textarea>
+                                </div>
+                                <button type="submit" class="submit-btn" id="submit-btn">
+                                    <span class="submit-text">Send Message</span>
+                                    <div class="submit-arrow">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    </div>
+                                </button>
+                                <div id="form-status" class="form-status"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-logo">BACKEND<span class="logo-accent">.AI</span></span>
+            <span class="footer-copy">Built with Django & passion. All systems operational.</span>
+            <span class="footer-status">
+                <span class="status-dot"></span>
+                Online
+            </span>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}?v=20.0"></script>
+</body>
+</html>
