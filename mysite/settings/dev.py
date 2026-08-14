@@ -12,3 +12,12 @@ CSRF_COOKIE_SECURE = False
 SESSION_COOKIE_SECURE = False
 SECURE_HSTS_SECONDS = 0
 SECURE_SSL_REDIRECT = False
+
+# Use in-memory cache for local dev — Redis is only required in production.
+# This means rate-limiting (contact form) resets on every server restart, which is fine locally.
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "dev-cache",
+    }
+}
