@@ -11,14 +11,14 @@
     <meta property="og:title" content="{{ global_setting.title|default:'Ersin - Backend & AI Engineer' }}" />
     <meta property="og:description" content="Backend & AI Engineer crafting intelligent systems, scalable APIs, and world-class infrastructure." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://yourdomain.com/" />
-    <meta property="og:image" content="https://yourdomain.com/static/img/og-preview.jpg" />
+    <meta property="og:url" content="{% if request %}{{ request.build_absolute_uri }}{% else %}https://ersin.dev/{% endif %}" />
+    <meta property="og:image" content="{% if request %}{{ request.scheme }}://{{ request.get_host }}{% static 'img/og-preview.jpg' %}{% else %}{% static 'img/og-preview.jpg' %}{% endif %}" />
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{{ global_setting.title|default:'Ersin - Backend & AI Engineer' }}" />
     <meta name="twitter:description" content="Backend & AI Engineer crafting intelligent systems, scalable APIs, and world-class infrastructure." />
-    <meta name="twitter:image" content="https://yourdomain.com/static/img/og-preview.jpg" />
+    <meta name="twitter:image" content="{% if request %}{{ request.scheme }}://{{ request.get_host }}{% static 'img/og-preview.jpg' %}{% else %}{% static 'img/og-preview.jpg' %}{% endif %}" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
