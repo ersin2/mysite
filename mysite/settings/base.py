@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
-from re import template
 import os
 from dotenv import load_dotenv
 
@@ -42,7 +41,6 @@ INSTALLED_APPS = [
     'apps.intro',
     'apps.contact',
     'apps.my_portfolio',
-    'apps.about_me',
 ]
 
 MIDDLEWARE = [
@@ -68,12 +66,11 @@ JAZZMIN_SETTINGS = {
     ],
     "show_sidebar": True,
     "navigation_expanded": True,
-    "order_with_respect_to": ["intro", "about_me", "my_portfolio", "contact"],
+    "order_with_respect_to": ["intro", "my_portfolio", "contact"],
     "icons": {
         "intro.intro": "fas fa-home",
-        "about_me.about_me": "fas fa-user",
         "my_portfolio.PortfolioProject": "fas fa-code",
-        "contact.contact": "fas fa-address-book",
+        "contact.SiteContactInfo": "fas fa-address-book",
         "contact.ContactMessage": "fas fa-envelope",
     },
     "default_icon_parents": "fas fa-chevron-circle-right",
@@ -159,7 +156,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-# STATIC_ROOT = BASE_DIR / 'static'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
 

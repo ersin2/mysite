@@ -3,10 +3,12 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.core.cache import cache
 import html
-from apps.contact.models import contact, ContactMessage
+from apps.contact.models import ContactMessage
+
 
 def contact_view(request):
     return render(request, 'index.html', {})
+
 
 @require_POST
 def send_message(request):
@@ -53,5 +55,3 @@ def send_message(request):
         'status': 'success',
         'message': 'Message transmitted successfully.'
     })
-
-  
